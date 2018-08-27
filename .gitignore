@@ -62,3 +62,7 @@ typings/
 
 # visual studio files
 .vs/
+
+# config filer
+OAY.Data/App.config
+OAY/Web.config
