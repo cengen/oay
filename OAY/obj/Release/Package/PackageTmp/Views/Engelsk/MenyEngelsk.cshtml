@@ -1,0 +1,200 @@
+﻿@model OAY.Web.ViewModels.MenyListeViewModel
+
+@{
+    ViewBag.Title = "Menu";
+    ViewBag.Description = "Have a lunch on board or on an island in the Oslo Fjord";
+    Layout = "~/Views/Shared/_LayoutEnglish.cshtml";
+}
+
+@section scripts {
+    <script>
+
+        $(function () {
+            var viewModel = function () {
+                var self = this;
+                self.forretter = ko.observableArray(@Html.Raw(Model.ForrettListeJson));
+                self.hovedretter = ko.observableArray(@Html.Raw(Model.HovedrettListeJson));
+                self.desserter = ko.observableArray(@Html.Raw(Model.DessertListeJson));
+                self.rodviner = ko.observableArray(@Html.Raw(Model.RodvinListeJson));
+                self.hvitviner = ko.observableArray(@Html.Raw(Model.HvitvinListeJson));
+                self.likorer = ko.observableArray(@Html.Raw(Model.LikorListeJson));
+                self.aperitiffer = ko.observableArray(@Html.Raw(Model.AperitiffListeJson));
+                self.diverse = ko.observableArray(@Html.Raw(Model.DiverseListeJson));
+
+            };
+            var vm = new viewModel();
+
+            ko.applyBindings(vm);
+
+        });
+    </script>
+}
+
+
+<div class="main">
+    <div class="container">
+        <figure><img src="~/Images/Meny/matOgDrikke.jpg" class="img-rounded" alt="fresh seafood"></figure>
+        <section class="hgroup">
+            <h1 class="section_header fancy centered">Menu</h1>
+        </section>
+
+        <div class="service_teaser elegant">
+            <div class="row">
+                <div class="service_photo col-sm-4 col-md-4">
+                    <figure style="background-image:url(/Images/Meny/forrett.png)"></figure>
+                </div>
+                <div class="service_details col-sm-8 col-md-8">
+                    <h2 class="section_header elegant"><b>Appetizer</b><small> a good start</small></h2>
+                    <ul class="meny" data-bind="foreach: forretter">
+                        <li class="list-group-item">
+                            <span data-bind="text: engelskBeskrivelse"></span>
+                            <span class="pull-right" data-bind="text: pris + ',-'"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service_teaser elegant">
+            <div class="row">
+                <div class="service_photo col-sm-4 col-md-4">
+                    <figure style="background-image:url(/Images/Meny/hovedrett.jpg)"></figure>
+                </div>
+                <div class="service_details col-sm-8 col-md-8">
+                    <h2 class="section_header elegant"><b>Main course</b><small> seafood or meat</small></h2>
+                    <ul class="meny" data-bind="foreach: hovedretter">
+                        <li class="list-group-item">
+                            <span data-bind="text: engelskBeskrivelse"></span>
+                            <span class="pull-right" data-bind="text: pris + ',-'"></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="service_teaser elegant">
+            <div class="row">
+                <div class="service_photo col-sm-4 col-md-4">
+                    <figure style="background-image:url(/Images/Meny/dessert.jpg)"></figure>
+                </div>
+                <div class="service_details col-sm-8 col-md-8">
+                    <h2 class="section_header elegant"><b>Dessert</b><small> something sweet at the end</small></h2>
+                    <ul class="meny" data-bind="foreach: desserter">
+                        <li class="list-group-item">
+                            <span data-bind="text: engelskBeskrivelse"></span>
+                            <span class="pull-right" data-bind="text: pris + ',-'"></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <section class="call_to_action">
+            <h4>If you have any special requests, please let us know.</h4>
+        </section>
+
+
+        <div class="service_teaser elegant">
+            <div class="row">
+                <div class="service_photo col-sm-4 col-md-4">
+                    <figure style="background-image:url(/Images/Meny/hvitvin.png)"></figure>
+                </div>
+                <div class="service_details col-sm-8 col-md-8">
+                    <h2 class="section_header elegant"><b>Whitewine</b></h2>
+                    <ul class="meny" data-bind="foreach: hvitviner">
+                        <li class="list-group-item">
+                            <span data-bind="text: engelskBeskrivelse"></span>
+                            <span class="pull-right" data-bind="text: pris + ',-'"></span>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="service_teaser elegant">
+            <div class="row">
+                <div class="service_photo col-sm-4 col-md-4">
+                    <figure style="background-image:url(/Images/Meny/rodvin.jpg)"></figure>
+                </div>
+                <div class="service_details col-sm-8 col-md-8">
+                    <h2 class="section_header elegant"><b>Redwine</b></h2>
+                    <ul class="meny" data-bind="foreach: rodviner">
+                        <li class="list-group-item">
+                            <span data-bind="text: engelskBeskrivelse"></span>
+                            <span class="pull-right" data-bind="text: pris + ',-'"></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="service_teaser elegant">
+            <div class="row">
+                <div class="service_photo col-sm-4 col-md-4">
+                    <figure style="background-image:url(/Images/Meny/aperitiff.jpg)"></figure>
+                </div>
+                <div class="service_details col-sm-8 col-md-8">
+                    <h2 class="section_header elegant"><b>Aperitif</b><small>Sparkling, Champagne, Rosé</small></h2>
+                    <ul class="meny" data-bind="foreach: aperitiffer">
+                        <li class="list-group-item">
+                            <span data-bind="text: engelskBeskrivelse"></span>
+                            <span class="pull-right" data-bind="text: pris + ',-'"></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="service_teaser elegant">
+            <div class="row">
+                <div class="service_photo col-sm-4 col-md-4">
+                    <figure style="background-image:url(/Images/Meny/digestiff.jpg)"></figure>
+                </div>
+                <div class="service_details col-sm-8 col-md-8">
+                    <h2 class="section_header elegant"><b>Digestif </b><small>Liquer, Cognac</small></h2>
+                    <ul class="meny" data-bind="foreach: likorer">
+                        <li class="list-group-item">
+                            <span data-bind="text: engelskBeskrivelse"></span>
+                            <span class="pull-right" data-bind="text: pris + ',-'"></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="service_teaser elegant">
+            <div class="row">
+                <div class="service_photo col-sm-4 col-md-4">
+                    <figure style="background-image: url(/Images/Meny/diverse.jpg)"></figure>
+                </div>
+                <div class="service_details col-sm-8 col-md-8">
+                    <h2 class="section_header elegant">
+                        <b>Diverse </b><small>Alcohol-free, mineralwater, Coffee</small>
+                    </h2>
+                    <ul class="meny" data-bind="foreach: diverse">
+                        <li class="list-group-item">
+                            <span data-bind="text: engelskBeskrivelse"></span>
+                            <span class="pull-right" data-bind="text: pris + ',-'"></span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <section class="call_to_action">
+            <h5 class="section_header fancy centered">
+                We are able to provide all kind of food, drinks and snacks. Send a <a href='@Url.Action("ContactUs", "Engelsk")'>message</a> and we will make it for you!
+                <small>
+                    Prices are in NOK (VAT 25% additional to all prices). 250,- NOK additional to total price for equipements.
+                </small>
+            </h5>
+        </section>
+    </div>
+</div>
+

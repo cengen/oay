@@ -1,0 +1,69 @@
+﻿@model OAY.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="main">
+<div class="container">
+    <section class="hgroup">
+        <h1>Administrasjon for oceanadventure.no</h1>
+        <ul class="breadcrumb pull-right">
+            <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+            <li class="active">Logg inn</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="signin">
+                    <div class="social_sign">
+                        <h3>Logg inn</h3>
+                        <a><i class="fa fa-user"></i></a>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"></div>
+                        <div class="form col-lg-8">
+                            @using (Html.BeginForm("Login","Admin"))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                @Html.ValidationMessage("CustomError")
+
+                                <fieldset>
+                                    <ul>
+                                        <li>
+                                            @Html.LabelFor(m => m.UserName)
+                                            @Html.TextBoxFor(m => m.UserName, new {@class = "form-control"})
+                                            @Html.ValidationMessageFor(m => m.UserName)
+                                        </li>
+                                        <li>
+                                            @Html.LabelFor(m => m.Password)
+                                            @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
+                                            @Html.ValidationMessageFor(m => m.Password)
+                                        </li>
+                                    </ul>
+                                    <input type="submit" value="Logg inn"/>
+                                </fieldset>
+                            }
+                        </div>
+                        <div class="col-lg-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+    
+@section Scripts {
+<script src="~/Scripts/lib/jquery.validate.min.js"></script>
+<script src="~/Scripts/lib/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/lib/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+
+

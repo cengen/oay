@@ -1,0 +1,19 @@
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Data\bin\Debug\OAY.Data.dll.config
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Data\bin\Debug\OAY.Data.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Data\bin\Debug\OAY.Data.pdb
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Data\bin\Debug\OAY.Models.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Data\bin\Debug\OAY.Models.pdb
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Data\obj\Debug\OAY.Data.csprojResolveAssemblyReference.cache
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Data\obj\Debug\OAY.Data.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Data\obj\Debug\OAY.Data.pdb
+D:\OAY\OAY\OAY.Data\bin\Debug\OAY.Data.dll.config
+D:\OAY\OAY\OAY.Data\bin\Debug\OAY.Data.dll
+D:\OAY\OAY\OAY.Data\bin\Debug\OAY.Data.pdb
+D:\OAY\OAY\OAY.Data\bin\Debug\OAY.Models.dll
+D:\OAY\OAY\OAY.Data\bin\Debug\OAY.Models.pdb
+D:\OAY\OAY\OAY.Data\bin\Debug\OAY.Models.dll.config
+D:\OAY\OAY\OAY.Data\obj\Debug\OAY.Data.csprojAssemblyReference.cache
+D:\OAY\OAY\OAY.Data\obj\Debug\OAY.Data.csproj.CoreCompileInputs.cache
+D:\OAY\OAY\OAY.Data\obj\Debug\OAY.Data.csproj.CopyComplete
+D:\OAY\OAY\OAY.Data\obj\Debug\OAY.Data.dll
+D:\OAY\OAY\OAY.Data\obj\Debug\OAY.Data.pdb

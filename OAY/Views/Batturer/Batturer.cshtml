@@ -1,0 +1,94 @@
+﻿@model OAY.Web.ViewModels.BatturerListViewModel
+
+@{
+    ViewBag.Title = "Opplev Oslofjorden";
+    ViewBag.Description = "Sightseeing med båt i Oslofjorden. Opplev Oslofjorden, lei vår båt med sjåfør. Sightseeing, sommerfest, lunsjcruise eller dagsturer i Oslofjorden.";
+    ViewBag.Keywords = "Oslofjorden, Båtturer, Dagstur, Oslo";
+}
+
+
+@section scripts {
+    <script>
+
+        $(function () {
+            var viewModel = function () {
+                this.batturer = ko.observableArray(@Html.Raw(Model.BatturerJson));
+
+                this.valgtBattur = {};
+                this.errorMessage = ko.observable();
+                this.showError = function (error) {
+                    $('#error-container').fadeIn();
+                };
+            };
+            var vm = new viewModel();
+
+            _.each(vm.batturer(), function (battur) {
+                battur.imageUrl = ko.computed(function () {
+                    var url = '@Model.ImageUrlPrefix' + 'no-image-large.png';
+                    return url;
+                });
+            });
+
+            ko.applyBindings(vm);
+
+        });
+    </script>
+}
+
+
+
+
+
+<div class="main">
+    <div class="container batturer">
+        <section class="hgroup">
+            <h1 class="section_header fancy centered">Forslag til båtturer i Oslofjorden</h1>
+            <h2 class="section_header fancy centered"><small>Klikk på bildene for mer informasjon om den enkelte båtturen</small> </h2>
+            <ul class="breadcrumb pull-right">
+                <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+                <li class="active">Båtturer</li> 
+            </ul>
+        </section>
+
+        <section class="portfolio_teasers_wrapper">
+
+            <div class="portfolio_strict row">
+                <div data-bind="template: { name: 'battur-template', foreach: batturer }"></div>
+            </div>
+
+            <script type="text/html" id="battur-template">
+                <div class="col-sm-6 col-md-6">
+                    <div class="portfolio_item">
+                        <a data-bind="attr:  { href: '/batturer/battur/' + batturId }">
+                            <figure class="batturer_thumbnail_figure">
+                                <b data-bind="text: tilSted"></b>
+                                <img class="batturer_thumbnail " data-bind="attr: { src: hovedbilde }" alt="båttur på Oslofjorden">
+                                <svg viewBox="0 0 180 320" preserveAspectRatio="none">
+                                    <path d="M 180,0 0,0 0,0 180,0 z" />
+                                </svg>
+                                <figcaption>
+                                    <p data-bind="text: ingress"></p>
+                                    <div class="view_button" data-bind="text: tilSted"></div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <div class="portfolio_description">
+                            <h3><a data-bind="attr:  { href: '/batturer/battur/' + batturId }, text: overskrift"></a></h3>
+                            <p><b data-bind="text: fraSted + ' til ' + tilSted"></b></p>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <p><a class="btn btn-danger btn-mini" data-bind="attr: { href: '/batturer/endreBattur/' + batturId }">Endre Båttur</a></p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+        </section>
+    </div>
+</div>
+
+
+
+
+

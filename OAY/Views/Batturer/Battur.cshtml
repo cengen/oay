@@ -1,0 +1,62 @@
+﻿@model OAY.Web.ViewModels.BatturViewModel
+
+@{
+    ViewBag.Title = "Båttur i Oslofjorden";
+    ViewBag.Description = "Båttur i Oslofjorden. " + Model.Battur.Ingress;
+    ViewBag.Keywords = "Oslofjorden, Båttur, Lunsjcruise, Sightseeing, Vennefest, Sommerfest";
+}
+
+@section scripts {
+<script>
+    $(document).ready(function() {
+        $('.thumb').on('click', function() {
+            $('#showimagediv').attr("src", this.src);
+        });
+    });
+</script>
+}
+
+<div class="main">
+    <div class="container">
+        <section class="call_to_action">
+            <h3>@Model.Battur.TilSted</h3>
+         
+        </section>
+      
+
+            <section class="portfolio_slider_wrapper">
+                <div class="flexslider">
+                    <div class="item">
+                        <img id="showimagediv" src="@Url.Content(Model.Hovedbilde)" alt="båttur i Oslofjorden - til @Model.Battur.TilSted - sommerfest til sjøs" />
+                    </div>
+                </div>
+                <div id="carousel" class="flexislider">
+                    <ul class="slides">
+                        @foreach (var m in Model.Bilder)
+                        {
+                            <li>
+                                <img class="thumb" src="@Url.Content(m.ImageFile)" alt="båttur i Oslofjorden, båtcruise til @Model.Battur.TilSted - sightseeing i Oslofjorden" />
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <div class="row">
+                    <div class="col-sm-9 col-md-9">
+                        <h2 class="section_header">@Model.Battur.Ingress</h2>
+                        <p>@Model.Battur.Beskrivelse</p>
+                    </div>
+                    <div class="well col-sm-3 col-md-3">
+                        <p><strong>Min tid:  </strong><span>@Model.Battur.MinimumTid</span> timer</p>
+                        <p><strong>Fra:    </strong><span>@Model.Battur.FraSted</span></p>
+                        <p><strong>Til:    </strong><span>@Model.Battur.TilSted</span></p>
+                    </div>
+                </div>
+                <ul class="pager">
+                    <li class="previous"><a href="@Url.Action("Battur", "batturer", new { id = Model.ForrigeBattur })">← Forrige</a></li>
+                    <li class="next"><a href="@Url.Action("Battur", "batturer", new { id = Model.NesteBattur })">Neste →</a></li>
+                </ul>
+            </section>
+</div>
+</div>

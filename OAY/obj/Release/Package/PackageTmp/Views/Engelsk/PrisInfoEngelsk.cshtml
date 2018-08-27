@@ -1,0 +1,81 @@
+﻿@model OAY.Web.ViewModels.PrisInfoViewModel
+
+@{
+    ViewBag.Title = "Pris";
+    ViewBag.Description = "Lunsjcruise i Oslofjorden. Båtturer i Oslos skjærgård. Lunsj med kollegaer eller venner";
+    ViewBag.Keywords = "Oslofjorden, Båttur, Lunsjcruise, Oslo";
+    Layout = "~/Views/Shared/_LayoutEnglish.cshtml";
+}
+
+@section scripts {
+    <script>
+
+        @*$(function () {
+            var viewModel = function () {
+                var self = this;
+                self.timepris = ko.observableArray(@Html.Raw(Model.ForrettListeJson));
+                self.illustrasjonsbilde = ko.observableArray(@Html.Raw(Model.HovedrettListeJson));
+               
+
+            };
+            var vm = new viewModel();
+
+            ko.applyBindings(vm);
+
+        });*@
+    </script>
+}
+
+
+<div class="main">
+    <div class="container samarbeidspartner">
+        <section class="hgroup">
+            <h1 class="section_header fancy centered">Price @DateTime.Now.Year</h1>
+
+            <ul class="breadcrumb pull-right">
+                <li>@Html.ActionLink("Home", "IndexEngelsk", "Engelsk")</li>
+                <li class="active">Price</li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-sm-8 col-md-8">
+                    <section class="portfolio_slider_wrapper">
+                        <div class="flexslider" id="portfolio_slider">
+                            <div class="slides">
+                                
+                                <img src="@Url.Content(Model.ImagePath)"  alt="yacht på oslosfjorden" />
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <article class="portfolio_details">
+                      <h2 class="section_header">Prices for  @DateTime.Now.Year</h2>
+                        <p>
+                            High season from 1. May to 31. August<br/>
+                            Out of high season by arrangement.
+                        </p> <br>
+                        <br>
+                        <div><p>
+                                <strong>Hourly rate:</strong> @Model.PrisInfo.Timepris ,- Nok (excluding VAT)<br />
+                          High season 3900,- Nok (excluding VAT) <br />
+                                <small> 10% VAT will be added</small>
+                            </p>
+                            <p>
+                                <strong>Lease time:</strong> Minimum @Model.PrisInfo.MinimumsTid hours. <br />
+
+                            </p>
+                        </div>
+                        <br>
+
+                    </article>
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+</div>
+

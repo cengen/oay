@@ -1,0 +1,3 @@
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\obj\Debug\OAY.csprojResolveAssemblyReference.cache
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\obj\Debug\OAY.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\obj\Debug\OAY.pdb

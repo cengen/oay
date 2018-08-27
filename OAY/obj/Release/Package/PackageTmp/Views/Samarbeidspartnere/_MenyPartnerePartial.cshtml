@@ -1,0 +1,6 @@
+﻿@model List<OAY.Models.Samarbeidspartner>
+
+@foreach (var m in Model)
+{
+    <li>@Html.ActionLink(m.Overskrift, "Samarbeidspartner", "Samarbeidspartnere", new { id = m.SamarbeidspartnerId }, null)</li>
+}

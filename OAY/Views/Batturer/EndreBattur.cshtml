@@ -1,0 +1,631 @@
+﻿@model OAY.Web.ViewModels.BatturViewModel
+
+@section scripts{
+    <script>
+
+    $(function() {
+        var progressBar = $("#progress-bar");
+
+        var battur = function() {
+            var self = this;
+            self.batturId = ko.observable("@Model.Battur.BatturId");
+            self.beskrivelse = ko.observable(@Html.Raw(Json.Encode(Model.Battur.Beskrivelse)));
+            self.engelskBeskrivelse = ko.observable(@Html.Raw(Json.Encode(Model.Battur.EngelskBeskrivelse)));
+            var fraStedJson = @Html.Raw(Json.Encode(Model.Battur.FraSted));
+            self.fraSted = ko.observable(fraStedJson != null ? fraStedJson : "Oslo");
+            var ingressJson = @Html.Raw(Json.Encode(Model.Battur.Ingress));
+            self.ingress = ko.observable(ingressJson);
+            self.minimumTid = ko.observable("@Model.Battur.MinimumTid");
+            self.pris = ko.observable("@Model.Battur.Pris");           
+            self.overskrift = ko.observable(@Html.Raw(Json.Encode(Model.Battur.Overskrift)));
+            self.tilSted = ko.observable(@Html.Raw(Json.Encode(Model.Battur.TilSted)));
+            self.valgtHovedbilde = ko.observable('@Model.Hovedbilde');
+
+            self.erny = ko.observable("@Model.ErNy");
+
+          
+        };
+
+
+        var viewModel = function(battur) {
+            var self = this;
+            self.lagretHovedbilde = ko.observable("@Model.Hovedbilde");
+            self.model = battur;
+            self.kategorier = ko.observableArray(@Html.Raw(Model.KategorierJSON));
+            self.batturKategorier = ko.observableArray(@Html.Raw(Model.BatturKategorierJSON));
+            self.lagredeBilderSomSkalSlettes = ko.observableArray([]);
+            self.lagredeBilder = ko.observableArray(@Html.Raw(Model.BilderJSON));
+
+            self.valgtFilTilHovedbilde = ko.observable();
+            self.nyeBildefiler = ko.observableArray([]);
+            self.errorMessage = ko.observable("");
+            self.imageUploadInputValue = ko.observable();
+
+            //self.showError = function(error) {
+            //    var resetUi = function() {
+            //        $('#command-buttons').fadeIn();
+            //        $('#fail-msg-container').fadeIn();
+            //    };
+            //    self.hideProgressBar(resetUi);
+            //    if (error.statusText) {
+            //        self.errorMessage(error.statusText);
+            //    }
+            //    if (error.responseText) {
+            //    }
+            //};
+
+            self.showError = function(error) {
+                $('#fail-msg-container').fadeIn();
+            };
+
+            self.showImageUpload = function() {
+                $('#lastOppBilde-button').hide();
+                $('#upload-form-container').removeClass('none');
+            };
+            self.hideImageUpload = function() {
+                $('#lastOppBilde-button').show();
+                $('#upload-form-container').addClass('none');
+                $('#nye-bilder-container').addClass('none');
+            };
+
+            self.nullUtFelt = function() {
+                self.lagredeBilder.removeAll();
+                self.imageUploadInputValue(null);
+                self.hideImageUpload();
+            };
+
+
+            self.showSuccess = function() {
+                self.nullUtFelt();
+                var resetUi = function() {
+                    $('#command-buttons').fadeIn();
+                    $('#fail-msg-container').fadeOut();
+                    $('#delete-msg-container').fadeOut();
+                    $('#success-msg-container').fadeIn();
+                    $("#battur-data-form")[0].reset();
+                };
+                self.hideProgressBar(resetUi);
+                var fadeOut = function() {
+                    $('#success-msg-container').fadeOut();
+                };
+                _.delay(fadeOut, 5000);
+            };
+
+           
+
+            self.opplastningOk = function () {
+                $("#battur-data-form")[0].reset();
+                $('#fail-msg-container').fadeOut();
+                $('#success-msg-container').fadeIn();
+                var url = '/batturer/battur/' + self.model.batturId();
+                window.location.replace(url);
+            };
+
+
+            self.slettingOk = function () {
+                $('#fail-msg-container').fadeOut();
+                $('#success-msg-container').fadeIn();
+                var url = '/batturer/batturer';
+                window.location.replace(url);
+            };
+
+
+            self.hideProgressBar = function(showAfterHideFunction) {
+                progressBar.fadeOut(function() {
+                    showAfterHideFunction();
+                });
+            };
+
+            self.showDelete = function() {
+                $('#delete-msg-containe').fadeOut();
+                $('#delete-msg-container').fadeIn();
+                $('.cmd').each(function(i, element) {
+                    $(element).prop('disabled', true).addClass('muted');
+                });
+                var url = '/batturer';
+            };
+
+            self.slettBilderFraBattur = function() {
+                var counter = self.lagredeBilderSomSkalSlettes().length;
+                for (var i = 0; i < counter; i++) {
+                    var imageid = self.lagredeBilderSomSkalSlettes()[i];
+                    var images = self.lagredeBilder.remove(function(image) {
+                        return image.imageId == imageid;
+                    });
+                    self.slettBildeFraDatabase(images[0]);
+                    self.slettBildeFraImageFolder(images[0]);
+                    if (imageid == self.model.valgtHovedbilde()) {
+                        self.model.valgtHovedbilde(null);
+                        self.lagretHovedbilde(null);
+                    }
+                } //for
+                self.lagredeBilderSomSkalSlettes.removeAll();
+            };
+
+            self.slettBilderFraLagredeBilderListe = function(bilder) {
+                for (var i = 0; i < bilder.length; i++) {
+                    self.lagredeBilder.remove(bilder[i]);
+                }
+            };
+
+            self.endreBildeIdb = function(imageid) {
+                var imageArray = self.lagredeBilder.remove(function(item) { return item.imageId == imageid });
+                var image = imageArray[0];
+                var data = new Object();
+                var parts = image.imageFile.split('/');
+                var url = parts[parts.length - 1];
+                image.imageFile = url;
+                image.imageId = imageid;
+                if (imageid  == self.model.valgtHovedbilde()) {
+                    image.erHovedbilde = true;
+                } else {
+                    image.erHovedbilde = false;
+                }
+                return batturimagesDataService.save(image);
+            };
+
+            self.sjekkOmHovedbildeErBlittEndretTilEtAnnetLagretBilde = function() {
+                if (self.model.valgtHovedbilde() != self.lagretHovedbilde()) {
+                    self.endreBildeIdb(self.lagretHovedbilde());
+                    self.endreBildeIdb(self.model.valgtHovedbilde());
+                }
+            }
+
+            self.sjekkOmHovedbildeErBlittEndretTilEtNyttBilde = function() {
+                if (typeof self.valgtFilTilHovedbilde() !== "undefined") {
+                    //nulle ut tidligere valgt hovedbilde
+                    self.model.valgtHovedbilde(null);
+                    if ( (self.lagretHovedbilde() != null) && (typeof self.lagretHovedbilde() != "undefined")) {
+                        self.endreBildeIdb(self.lagretHovedbilde());
+                    }
+                    self.lagretHovedbilde(null);
+                }
+            }
+
+            self.sjekkOmHovedbildeErSatt = function() {
+                if ((typeof self.valgtFilTilHovedbilde() === "undefined") &&
+                    (self.model.valgtHovedbilde() == "" || self.model.valgtHovedbilde() == null) &&
+                    (self.lagretHovedbilde() == "" || self.lagretHovedbilde() == null )) {
+                    if (self.lagredeBilder().length > 0) {
+                        var defaultHovedbildeId = self.lagredeBilder()[0].imageId;
+                        self.model.valgtHovedbilde(defaultHovedbildeId);
+                        self.lagretHovedbilde(defaultHovedbildeId);
+                        self.endreBildeIdb(defaultHovedbildeId);
+                    } else {
+                        self.valgtFilTilHovedbilde(self.nyeBildefiler()[0]);
+                    }
+                } 
+            }
+
+
+            self.definerHovedbilde = function() {
+                if (!self.model.erny()) {
+                    self.sjekkOmHovedbildeErBlittEndretTilEtAnnetLagretBilde();
+                    self.sjekkOmHovedbildeErBlittEndretTilEtNyttBilde();
+                }
+                self.sjekkOmHovedbildeErSatt();
+            }
+
+            self.save = function() {
+                $('#fail-msg-container').fadeOut();
+                var valUtility = new ValidationUtility();
+                if (valUtility.validate('battur-data-form')) {
+                    $('#command-buttons').hide();
+                    self.hideImageUpload();
+                    if (self.lagredeBilderSomSkalSlettes().length > 0) {
+                        self.slettBilderFraBattur();
+                    }
+                    self.definerHovedbilde();
+                    var battur = ko.toJS(self.model);
+                    batturerDataService.save(battur).done(function(response) {
+                        if (response.batturId) {
+                            self.model.batturId(response.batturId);
+                        }
+                        if (self.nyeBildefiler().length > 0) {
+                            for (var i = 0; i < self.nyeBildefiler().length; i++) {
+                                self.lastOppBildefilTilFolder(self.nyeBildefiler()[i]).done(function(result) {
+                                    self.lastOppNyttBildeTilDb(result).done(function() {
+                                        self.nyeBildefiler([]);
+                                        self.opplastningOk();
+                                    }).fail(function(error) {
+                                        self.errorMessage("Noe gikk galt med opplastnig av bilde til database");
+                                        self.showError();
+                                    });
+                                });
+                            } //for
+                        } else {
+                            self.nyeBildefiler([]);
+                            self.opplastningOk(response.batturId);
+                        }
+                    }).fail(function(error) {
+                        self.errorMessage("Kunne ikke lagre båttur. Prøv igjen");
+                        self.showError();
+                    });
+                } else {
+                    self.errorMessage("Feltene er ikke riktig fylt ut.");
+                    self.showError();
+                }
+            };
+
+            self.lastOppNyttBildeTilDb = function(data) {
+                var parts = data.imageUrl.split('/');
+                var url = parts[parts.length - 1];
+                var image = new Object();
+                image.imagefile = url;
+                image.imageId = 0;
+                image.batturId = self.model.batturId();
+                image.erHovedbilde = data.erHovedbilde;
+                return batturimagesDataService.save(image);
+            };
+
+
+
+            self.lastOppBildefilTilFolder = function(fil) {
+                var data = new FormData();
+                data.append('image', fil);
+                data.append('id', self.model.batturId());
+                if (self.valgtFilTilHovedbilde() === fil) {
+                    data.append('erhovedbilde', true);
+                } else {
+                    data.append('erhovedbilde', false);
+                }
+                return batturerDataService.saveImage(data);
+            };
+
+
+            self.del = function() {
+                var battur = ko.toJS(self.model);
+                self.slettAlleBatturBilder();
+                self.slettAlleBatturKategorier();
+                batturerDataService.del(battur).done(function(response) {
+                    self.slettingOk();
+                }).fail(function() {
+                    self.errorMessage("Noe gikk feil ved sletting. Prøv igjen");
+                    self.showError();
+                }).always(function() {
+                    $('#del-confirm').modal('hide');
+                });
+            };
+
+            self.slettAlleBatturBilder = function() {
+                var lagredeBilder = self.lagredeBilder();
+                for (var i = 0; i < lagredeBilder.length; i++) {
+                    self.slettBildeFraDatabase(lagredeBilder[i]);
+                    self.slettBildeFraImageFolder(lagredeBilder[i]);
+                }
+                self.lagredeBilder.removeAll();
+                self.nyeBildefiler.removeAll();
+            }
+
+            self.slettAlleBatturKategorier = function() {
+                var batturKategorier = self.batturKategorier();
+                for (var i = 0; i < batturKategorier.length; i++) {
+                    self.slettBatturKategoriFraDatabase(batturKategorier[i]);
+                }
+            }
+
+            self.slettBildeFraNyeBilderListe = function(image) {
+                self.nyeBildefiler.remove(image);
+            };
+
+            self.slettBildeFraDatabase = function(image) {
+                batturimagesDataService.del(image).done(function(response) {
+
+                }).fail(function(error) {
+                    self.showError();
+                });
+            };
+
+            self.slettBatturKategoriFraDatabase = function(batturkategori) {
+                batturKategorierDataService.del(batturkategori).done(function(response) {
+                }).fail(function(error) {
+                    self.showError();
+                });
+            };
+
+            self.slettBildeFraImageFolder = function(image) {
+                return batturerDataService.deleteImage(image);
+            };
+
+            self.lagreBildefilIBildefilListe = function() {
+                var file = $('.image-upload')[0].files[0];
+                self.readURL(file);
+                self.nyeBildefiler.push(file);
+            };
+
+            self.readURL = function(input) {
+                var reader = new FileReader();
+                var counter = self.nyeBildefiler().length;
+                reader.onload = function(e) {
+                    $('#bilde_' + counter).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input);
+            };
+        };
+        var vm = new viewModel(new battur());
+
+        ko.applyBindings(vm);
+
+    });
+
+    </script>
+    }
+
+
+
+
+    <div class="main">
+
+    <div class="container">
+
+        <!-- Legg til bilde -->
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <br/>
+                <div class="alert alert-warning" role="alert">Bildene må være i størrelse 1200px X 550px. Bildeformat er JPG og PNG. 4 bilder pr båttur er best :-)</div>
+
+                <form id="upload-form" method="post" enctype="multipart/form-data">
+                    <div class="row" data-bind="foreach: lagredeBilder">
+                        <div class="well col-sm-2 col-md-2">
+                            <div class="thumbnail">
+                                <img data-bind="attr: { id: 'jsonbilde_' + $index(), src: imageFile } "/>
+                                <div class="caption">
+                                    <label>
+                                        <input type="radio" name="hovedbilde" data-bind="checked: $root.model.valgtHovedbilde,   value: imageId + ''"/>Hovedbilde
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" data-bind="checked: $parent.lagredeBilderSomSkalSlettes, attr: { value: imageId }"/>Fjern
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div id="nye-bilder-container" data-bind="foreach: nyeBildefiler">
+                            <div class="well col-sm-2 col-md-2">
+                                <img style="width: 150px; height: 120px;" data-bind="attr: { id: 'bilde_' +  $index()  }"/>
+                                <label>
+                                    <input type="radio" id="hovedbilde_n" name="hovedbilde" data-bind="checked: $root.valgtFilTilHovedbilde, value: $data"/>Hovedbilde
+                                </label>
+                                <button type="button" class="btn btn-danger" data-bind="click: $parent.slettBildeFraNyeBilderListe"> Slett</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <button id="lastOppBilde-button" data-bind="click: showImageUpload" class="btn btn-primary btn-large push-down">
+                    <i class="icon-upload"></i>Legg til bilde
+                </button>
+                <div id="upload-form-container" class="none">
+                    <input id="input-image-upload" class="image-upload" type="file" name="image" data-bind="value: imageUploadInputValue, event: { change: lagreBildefilIBildefilListe }"/>
+                </div>
+
+                <hr/>
+            </div>
+        </div>
+
+        <!-- TODO fjernes -->
+        <!-- Kategorier -->
+        @*<div data-bind="foreach: kategorier">
+            <b class="btn btn-default" data-bind="text: KategoriNavn"></b>
+        </div>*@
+
+
+        <!-- Form data -->
+
+        <section>
+            <form id="battur-data-form">
+                <div class="form-group">
+                    <div class="well col-sm-9 col-md-9">
+                        <label for="overskrift">Overskrift</label>
+                        <input id="overskrift"
+                               name="overskrift"
+                               data-bind="value: model.overskrift"
+                               type="text"
+                               class="form-control col-md-9"
+                               autofocus
+                               style="width: 100%"
+                               data-role="validate"
+                               title="Overskrift"
+                               data-content="Overskrift må fylles inn"
+                               placeholder="Overskrift"
+                               required/>
+
+                        <br/>
+                        <label for="ingress">Ingress</label>
+                        <input id="ingress"
+                               name="ingress"
+                               data-bind="value: model.ingress"
+                               style="width: 100%"
+                               type="text"
+                               class="form-control  col-md-9"
+                               placeholder="Ingress"
+                               data-role="validate"
+                               title="Ingress"
+                               data-content="En kort introduksjon til båtturen"
+                               required/>
+                        <br/>
+                        <label for="beskrivelse">Beskrivelse</label>
+                        <textarea id="beskrivelse"
+                                  name="beskrivelse"
+                                  rows="7"
+                                  style="width: 100%; padding: 5px;"
+                                  data-bind="value: model.beskrivelse"
+                                  title="Beskrivelse av båtturen"
+                                  data-role="validate"
+                                  data-content="En utfyllende beskrivelse av båtturen"
+                                  class="form-control col-md-9"
+                                  required>                       
+                    </textarea>
+                        <br/>
+                        <label for="engelskBeskrivelse">Engelsk beskrivelse</label>
+                        <textarea id="engelskBeskrivelse"
+                                  name="engelskBeskrivelse"
+                                  rows="7"
+                                  style="width: 100%; padding: 5px;"
+                                  data-bind="value: model.engelskBeskrivelse"
+                                  title="Beskrivelse av båtturen på engelsk"
+                                  data-role="validate"
+                                  data-content="beskrivelse på engelsk"
+                                  class="form-control col-md-9"
+                                  required></textarea>
+                    </div>
+                    <div class="well col-sm-3 col-md-3">
+                        <label for="minimumTid">Minimumstid <small>(timer)</small></label>
+                        <input id="minimumTid"
+                               name="minimumTid"
+                               class="form-control"
+                               data-bind="value: model.minimumTid"
+                               type="number"
+                               data-role="validate"
+                               data-content="Minimumstid"
+                               required/>
+                        <br/>
+                        @*<label for="pris">Pris <small>(fra)</small></label>
+                        <input id="pris"
+                               name="pris"
+                               class="form-control"
+                               data-bind="value: model.pris"
+                               type="number"
+                               data-role="validate"
+                               data-content="Pris"
+                                />
+                        <br />*@
+                        <label for="fraSted">Fra Sted <small>(default: Oslo)</small></label>
+                        <input id="fraSted"
+                               name="fraSted"
+                               class="form-control"
+                               data-bind="value: model.fraSted"
+                               type="text"
+                               data-content="Hvor kjører du fra? Om du ikke oppgir noe vil det stå 'Oslo'"
+                               placeholder="Fra sted"/>
+                        <br/>
+                        <label for="tilSted">Til Sted</label>
+                        <input id="tilSted"
+                               class="form-control"
+                               name="tilSted"
+                               data-bind="value: model.tilSted"
+                               type="text"
+                               placeholder="Til Sted"
+                               data-role="validate"
+                               data-content="Hvor kjører du til?"
+                               required/>
+                    </div>
+                </div>
+                <br/>
+                <!-- Buttons -->
+                    <div class="col-sm-12 col-md-12">
+                        <div id="fail-msg-container" class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Ops!</strong><span data-bind="text: $root.errorMessage"></span>
+                    </div>
+                    <div id="success-msg-container" class="alert alert-success">
+                        <h4>Ok. Siden lastes inn på nytt</h4>
+                    </div>
+                    <div class="span11">
+                        <div id="command-buttons" class="pull-right">
+                            @if (!Model.ErNy)
+                            {
+                                <a href="#" id="delete-link" class="cmd"
+                                   @* data-bind="click: requestDelConfirm"*@
+                                   data-bind="click: del"
+                                   tabindex="-1">Slett båtturen</a>
+                                <button data-bind="click: save" type="button"
+                                        class="btn btn-primary btn-large push-right cmd">
+                                    Lagre endringene
+                                </button>
+                            }
+                            else
+                            {
+                                <button data-bind="click: save" type="button"
+                                        class="btn btn-primary btn-large push-right cmd">
+                                    Lagre
+                                </button>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+    </div>
+        </div>
+
+    <!-- Message Containers -->
+  @*  <div id="img-fail-msg-container" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4>Error</h4>
+        <strong>Ojojoj!</strong> Noe gikk galt! Hilsen fra server:
+        <span data-bind="text: errorMessage"></span>
+    </div>
+
+    <div class="row-fluid">
+        <div id="success-msg-container" class="span11 alert alert-success alert-block push-down">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <h4>Endringene er lagret</h4>
+            <p>
+                Du kan @Html.ActionLink("Legge til en ny båttur", "NyBattur", "Batturer") eller
+                @Html.ActionLink("Gå til båtturlisten", "Batturer", "Batturer")
+            </p>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div id="fail-msg-container"
+             class="span11 alert alert-error alert-block push-down">
+            <button type="button" class="close"
+                    data-dismiss="alert">
+                x
+            </button>
+            <h4>Feil</h4>
+            <p>Åj, her har det skjedd en feil! Hilsen fra server: </p>
+            <p data-bind="text: errorMessage"></p>
+        </div>
+    </div>*@
+
+    <div class="row-fluid">
+        <div id="delete-msg-container"
+             class="span11 alert alert-error alert-block push-down">
+            <button type="button" class="close"
+                    data-dismiss="alert">
+                x
+            </button>
+            <h4>Båtturen er slettet</h4>
+            <p>
+                Batturen er fjernet fra databasen.
+                Du kan @Html.ActionLink("Legge til en ny båttur", "NyBattur", "Batturer") eller
+                @Html.ActionLink("Gå til båtturlisten", "Batturer", "Batturer")
+            </p>
+        </div>
+    </div>
+   
+
+
+    <div id="del-confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="del-confirm-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h3 id="del-confirm-label">Confirm Delete</h3>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete?</p>
+            <p class="alert alert-error push-down">
+                <strong>Note:</strong>
+                There is no undo for this action
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button class="btn btn-primary" data-bind="click: del">Slett båtturen </button>
+        </div>
+    </div>
+
+
+
+

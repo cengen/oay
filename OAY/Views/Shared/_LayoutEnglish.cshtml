@@ -1,0 +1,145 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="keywords" content="@ViewBag.Keywords" />
+
+    <title>@ViewBag.Title</title>
+
+    @Html.Partial("_GoogleAnalytics")
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link href="~/Content/Fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>               
+                <div id="social_media_wrapper">
+                    <a href="https://www.facebook.com/OceanAdventureYachting?fref=ts"><i class="fa fa-facebook"></i></a>
+                    <a href="https://no.linkedin.com/pub/arild-foss-www-oceanadventure-no/75/447/312/no"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://twitter.com/ocean_firmapost"><i class="fa fa-twitter"></i></a>
+                    <!-- TODO lage google +-->
+                    @*<a href="#googleplus"><i class="fa fa-google-plus"></i></a>*@
+                </div>
+                <div id="sign">
+                    @Html.Partial("_LogoutPartial")
+                    <a href="@Url.Action("Index", "Home")"><img src="~/Images/norsk.jpg" alt="tilbake til norsk nettside" /></a>
+                </div>
+            </div>            
+             <div class="navbar navbar-default" role="navigation">
+                <div id="logo">
+                    @Html.Partial("_LogoPartial")
+                </div>
+                <div id="navigation">
+                    <div class="navbar-header">
+                        <a class="btn btn-navbar btn-default navbar-toggle" data-toggle="collapse"
+                           data-target=".navbar-collapse">
+                            <span class="nb_left pull-left">
+                                <span class="fa fa-reorder"></span>
+                            </span>
+                            <span class="nb_right pull-right">Menu</span>
+                        </a>
+
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav pull-right navbar-nav">
+                            <li>@Html.ActionLink("Home", "IndexEngelsk", "Engelsk")</li>
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Boattrips<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    @Html.Action("_MenyPartialEngelsk", "Engelsk")
+                                </ul>
+                            </li>
+
+                            <li>@Html.ActionLink("Menu", "MenyEngelsk", "Engelsk")</li>
+                            <li>@Html.ActionLink("Price", "PrisInfoEngelsk", "Engelsk")</li>
+                            <li>@Html.ActionLink("The Boat", "BildegalleriEngelsk", "Engelsk")</li>
+                            <li>@Html.ActionLink("Contact us", "ContactUs", "Engelsk")</li>
+                        
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <section id="footer_teasers_wrapper">
+            <div class="container">
+            <div class="row">
+                <div class="footer_teaser col-sm-4 col-md-4">
+                    <h1>About us</h1>
+                    <p>Arild Foss, captain and owner.<br/>Loves the Oslofjord on a sunny summerday
+                    </p>
+                    <p>
+                        <i class="fa fa-map-marker"></i><a href="https://www.google.no/maps/place/Huk+Aveny+1,+0287+Oslo"> Huk Aveny 1, Oslo</a>
+                    </p>
+                    <p>
+                        <i class="fa fa-phone"></i><a href="tel:+4793037700"></a> (+47) 93 03 77 00
+                    </p>
+                    <p>
+                        <i class="fa fa-envelope"></i><a href="mailto:firmapost@oceanadventureyachting.no"> firmapost@oceanadventureyachting.no</a>
+                    </p>
+                </div>
+                <div class="footer_teaser col-sm-4 col-md-4">
+                    <h1>What others are saying about us</h1>
+                    <div id="TA_selfserveprop867" class="TA_selfserveprop">
+                        <div style="margin: 0 auto;">
+                            <ul id="CnTR56" class="TA_links oaSoHN5RIhIW">
+                                <li id="YsUXUn5l" class="GPD62Fc">
+                                    <a target="_blank" href="http://www.tripadvisor.com/">
+                                        <img src="http://www.tripadvisor.com/img/cdsi/img2/branding/150_logo-11900-2.png" alt="TripAdvisor"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <script src="http://www.jscache.com/wejs?wtype=selfserveprop&amp;uniq=867&amp;locationId=3961615&amp;lang=en_US&amp;rating=true&amp;nreviews=5&amp;writereviewlink=true&amp;popIdx=true&amp;iswide=false&amp;border=true&amp;display_version=2"></script>
+                </div>
+                <div class="footer_teaser col-sm-4 col-md-4">
+                    <h1>Ocean Adventure on Instagram</h1>
+                    <!-- SnapWidget -->
+                    <script src="http://snapwidget.com/js/snapwidget.js"></script>
+                    <!--[if IE]>
+                       <iframe src="http://snapwidget.com/in/?u=b2NlYW5fYWR2ZW50dXJlX3lhY2h0aW5nfGlufDEwMHwzfDN8fG5vfDV8bm9uZXxvblN0YXJ0fHllc3x5ZXM=&ve=180515" title="Instagram Widget" class="snapwidget-widget" id="instagram"  frameborder="0" scrolling="no" style="border: none; overflow: hidden; width: 100%;"></iframe>
+                   <![endif]-->
+                    <iframe src="http://snapwidget.com/in/?u=b2NlYW5fYWR2ZW50dXJlX3lhY2h0aW5nfGlufDEwMHwzfDN8fG5vfDV8bm9uZXxvblN0YXJ0fHllc3x5ZXM=&amp;ve=180515" title="Instagram Widget" class="snapwidget-widget" style="border: none; overflow: hidden; width: 100%;"></iframe>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6"> Copyright &copy;@DateTime.Now.Year Ocean Adventure </div>
+                    <div class="text-right col-sm-6 col-md-6"> Webmaster <a href="#">GeekGirl</a> </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <script src="~/Scripts/lib/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/lib/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/lib/knockout-3.3.0.js"></script>
+    <script src="~/Scripts/lib/underscore.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/app/dataservice.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

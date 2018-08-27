@@ -1,0 +1,13 @@
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Models\bin\Release\OAY.Models.dll.config
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Models\bin\Release\OAY.Models.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Models\bin\Release\OAY.Models.pdb
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Models\obj\Release\OAY.Models.csprojResolveAssemblyReference.cache
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Models\obj\Release\OAY.Models.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY.Models\obj\Release\OAY.Models.pdb
+D:\OAY\OAY\OAY.Models\bin\Release\OAY.Models.dll.config
+D:\OAY\OAY\OAY.Models\bin\Release\OAY.Models.dll
+D:\OAY\OAY\OAY.Models\bin\Release\OAY.Models.pdb
+D:\OAY\OAY\OAY.Models\obj\Release\OAY.Models.csproj.CoreCompileInputs.cache
+D:\OAY\OAY\OAY.Models\obj\Release\OAY.Models.dll
+D:\OAY\OAY\OAY.Models\obj\Release\OAY.Models.pdb
+D:\OAY\OAY\OAY.Models\obj\Release\OAY.Models.csprojAssemblyReference.cache

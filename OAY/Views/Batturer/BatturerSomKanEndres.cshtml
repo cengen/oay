@@ -1,0 +1,33 @@
+﻿@section scripts {
+    <script>
+
+        $(function () {
+            var viewModel = function () {
+                this.batturer = ko.observableArray(@Html.Raw(Model.BatturerJson));
+            };
+            ko.applyBindings(viewModel);
+        });
+    </script>
+}
+
+
+<div class="main">
+    <div class="container batturer">
+
+        <section class="portfolio_teasers_wrapper">
+            <div class="alert alert-warning" role="alert">Klikk på linken for båtturen du vil endre</div>
+            <div class="portfolio_strict row">
+                <div data-bind="foreach: batturer">
+                    <h5><a data-bind="attr:  { href: '/batturer/endrebattur/' + batturId }, text: tilSted"></a></h5>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>
+
+
+
+
+
+

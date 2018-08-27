@@ -1,0 +1,50 @@
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\Views\ApplicationInsights.config
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\csc.exe
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\vbc.exe
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\VBCSCompiler.exe
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\OAY.Web.dll.config
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\OAY.Web.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\OAY.Web.pdb
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\OAY.Data.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\OAY.Models.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\OAY.Data.pdb
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\bin\OAY.Models.pdb
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\obj\Debug\OAY.Web.csprojResolveAssemblyReference.cache
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\obj\Debug\OAY.Web.dll
+C:\Users\engencat\Documents\Visual Studio 2015\Projects\OAY\OAY\obj\Debug\OAY.Web.pdb
+D:\OAY\OAY\OAY\bin\Views\ApplicationInsights.config
+D:\OAY\OAY\OAY\bin\roslyn\csc.exe
+D:\OAY\OAY\OAY\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\OAY\OAY\OAY\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\OAY\OAY\OAY\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\OAY\OAY\OAY\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\OAY\OAY\OAY\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\OAY\OAY\OAY\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\OAY\OAY\OAY\bin\roslyn\System.Collections.Immutable.dll
+D:\OAY\OAY\OAY\bin\roslyn\System.Reflection.Metadata.dll
+D:\OAY\OAY\OAY\bin\roslyn\vbc.exe
+D:\OAY\OAY\OAY\bin\roslyn\VBCSCompiler.exe
+D:\OAY\OAY\OAY\bin\roslyn\VBCSCompiler.exe.config
+D:\OAY\OAY\OAY\bin\OAY.Web.dll.config
+D:\OAY\OAY\OAY\bin\OAY.Web.dll
+D:\OAY\OAY\OAY\bin\OAY.Web.pdb
+D:\OAY\OAY\OAY\bin\OAY.Data.dll
+D:\OAY\OAY\OAY\bin\OAY.Models.dll
+D:\OAY\OAY\OAY\bin\OAY.Data.pdb
+D:\OAY\OAY\OAY\bin\OAY.Data.dll.config
+D:\OAY\OAY\OAY\bin\OAY.Models.pdb
+D:\OAY\OAY\OAY\bin\OAY.Models.dll.config
+D:\OAY\OAY\OAY\obj\Debug\OAY.Web.csprojAssemblyReference.cache
+D:\OAY\OAY\OAY\obj\Debug\OAY.Web.csproj.CoreCompileInputs.cache
+D:\OAY\OAY\OAY\obj\Debug\OAY.Web.csproj.CopyComplete
+D:\OAY\OAY\OAY\obj\Debug\OAY.Web.dll
+D:\OAY\OAY\OAY\obj\Debug\OAY.Web.pdb

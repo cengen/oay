@@ -1,0 +1,148 @@
+﻿@model OAY.Web.ViewModels.BatturerListViewModel
+
+@{
+    ViewBag.Title = "Ocean Adventure";
+    Layout = "~/Views/Shared/_LayoutEnglish.cshtml";
+}
+
+@section scripts {
+    <script>
+
+    $(function () {
+        var viewModel = function () {
+            this.batturer = ko.observableArray(@Html.Raw(Model.BatturerJson));
+                this.samarbeidspartnere = ko.observableArray(@Html.Raw(Model.SamarbeidspartnereJson));
+
+                this.valgtBattur = {};
+                this.errorMessage = ko.observable();
+                this.showError = function (error) {
+                    $('#error-container').fadeIn();
+                };
+                this.requestDelConfirm = function (battur) {
+                    vm.valgtBattur = battur;
+                    $('#del-confirm').modal();
+                };
+
+                this.del = function () {
+                    var battur = ko.toJS(vm.valgtBattur);
+
+                    batturerDataService.del(battur).done(function (response) {
+                        vm.batturer.remove(function (item) {
+                            return item.id === battur.batturId;
+                        });
+                    }).fail(function (error) {
+                        vm.showError(error);
+                    }).always(function () {
+                        $('#del-confirm').modal('hide');
+                    });
+                };
+            };
+                var vm = new viewModel();
+
+                _.each(vm.batturer(), function (battur) {
+                    battur.hovedbilde = ko.computed(function () {
+                        var
+                            bilde = (battur.hovedbilde === '') ?
+                            '/Images/Batturer/no-image-large.png' : battur.hovedbilde,
+                            url = '@Model.ImageUrlPrefix' + bilde;
+                return url;
+            });
+        });
+
+        ko.applyBindings(vm);
+
+    });
+    </script>
+}
+
+
+
+<section class="slider_wrapper container">
+    <div class="flexslider">
+        <div class="item">
+
+            <div class="container">
+
+                <div class="carousel-caption">
+                    <h1>
+                        boattrip on the <strong>Oslofjord</strong><br>
+                        go on a sightseeing<br /> with <strong>Ocean Adventure</strong>
+                    </h1>
+                    <p class="lead skincolored"><strong>Enjoy</strong> the summer with good <strong>food and beverage </strong>onboard our yacht, <strong>Ocean Adventure !</strong></p>
+                </div>
+                <img src="~/Images/battur-i-oslofjorden-forside.jpg" alt="Ocean Adventure klar for en båttur i Oslofjorden">
+            </div>
+        </div>
+    </div>
+
+</section>
+<div class="main">
+    <div class="container">
+        
+        <section class="portfolio_teasers_wrapper" style="margin-top:20px">
+            <h2 class="section_header fancy centered">
+                Choose one of our proposed boattrips <small>or create your own progam </small>
+            </h2>
+            <div class="portfolio_strict row">
+                <div data-bind="template: { name: 'list-template', foreach: batturer }"></div>
+            </div>
+
+            <script type="text/html" id="list-template">
+                <div class="col-sm-6 col-md-6">
+
+                    <div class="portfolio_item ">
+                        <a data-bind="attr:  { href: '/batturer/batturengelsk/' + batturId}">
+                            <figure class="batturer_thumbnail_figure">
+                                <b data-bind="text: tilSted"></b>
+
+                                <img class="batturer_thumbnail" data-bind="attr: { src: hovedbilde }" alt="sighseeing in the Oslofjord">
+
+                                <svg viewBox="0 0 180 320" preserveAspectRatio="none">
+                                    <path d="M 180,0 0,0 0,0 180,0 z" />
+                                </svg>
+                                <figcaption>
+                                    <p>Sightseeing in the Oslofjord</p>
+                                    <div class="view_button" data-bind="text: tilSted"></div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <div class="portfolio_description">
+                            <h3>
+                                <a data-bind="attr:  { href: '/batturer/batturEngelsk/' + batturId  }, text: 'from Oslo to ' + tilSted"></a>
+                            </h3>
+                            @*<p>
+                                <b data-bind="text: 'from Oslo to ' + tilSted"></b>
+                            </p>*@
+                        </div>
+                    </div>
+                </div>
+            </script>
+        </section>
+        <section class="call_to_action">
+            <h3>Experience the Oslofjord </h3>
+            <h4>together with family, friends or colleges. Take a boattrip on the Oslofjord</h4>
+            <a class="btn btn-primary btn-lg" href='@Url.Action("KontaktOss", "Home")'>Yes, I would like to go on a boattrip!</a>
+        </section>
+      
+
+        <figure><img src="~/Images/Meny/matOgDrikke.jpg" class="img-rounded" alt="1"></figure>
+        <section class="hgroup">
+            <h1 class="section_header fancy centered">Menu</h1>
+
+
+        </section>
+        <section class="call_to_action">
+            <h3 class="section_header fancy centered">
+                Like to haave a meal on board or on an island in the Oslofjord? Order your dinner now! We have all rights for serving alcohol onboard. 
+                <small>
+                    The menu in <a href='@Url.Action("Meny", "Meny", "norwegian")'></a>
+                </small>
+            </h3>
+        </section>
+
+    </div>
+</div>
+
+
+
+

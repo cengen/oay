@@ -1,0 +1,180 @@
+﻿@model OAY.Web.ViewModels.BatturerListViewModel
+
+@{
+    ViewBag.Title = "Båttur i Oslofjorden, Oslo";
+    ViewBag.Description = "Båttur i Oslofjorden. Sommer, sol og sjø. Noe å feire? Sommerfest, vennefest eller har du bare lyst til å nyte livet? Bestill en båttur i Oslos skjærgård.";
+    ViewBag.Keywords = "Oslofjorden, Båttur, Dagstur, Oslo";
+}
+
+@section scripts {
+<script>
+
+  $(function () {
+    var viewModel = function () {
+      var self = this;
+      self.batturer = ko.observableArray(@Html.Raw(Model.BatturerJson));
+  self.samarbeidspartnere = ko.observableArray(@Html.Raw(Model.SamarbeidspartnereJson));
+
+  self.valgtBattur = {};
+  self.errorMessage = ko.observable();
+  self.showError = function (error) {
+    $('#error-container').fadeIn();
+  };
+  self.requestDelConfirm = function (battur) {
+    self.valgtBattur = battur;
+    $('#del-confirm').modal();
+  };
+
+  self.del = function () {
+    var battur = ko.toJS(self.valgtBattur);
+
+    batturerDataService.del(battur).done(function (response) {
+      self.batturer.remove(function (item) {
+        return item.id === battur.batturId;
+      });
+    }).fail(function (error) {
+      self.showError(error);
+    }).always(function () {
+      $('#del-confirm').modal('hide');
+    });
+  };
+            };
+  var vm = new viewModel();
+
+  _.each(vm.batturer(), function (battur) {
+    battur.hovedbilde = ko.computed(function () {
+      var
+        bilde = (battur.hovedbilde === '') ?
+          '/Images/Batturer/no-image-large.png' : battur.hovedbilde,
+        url = '@Model.ImageUrlPrefix' + bilde;
+      return url;
+    });
+  });
+  ko.applyBindings(vm);
+        });
+</script>
+}
+
+
+
+<section class="slider_wrapper container  forside">
+  <div class="flexslider">
+    <div class="item">
+      @*<div class="container">
+        *@
+        <div class="container google-maps" style="width: 100%">
+          <div class="carousel-caption">
+            <h1>
+              Arrangør av fjordcruise i Oslo<br />
+              <small>Alle rettigheter ombord</small>
+            </h1>
+
+
+            <p class="lead">
+              <strong>Fjordcruise </strong> - Båttur<br />Sommerfest - Vennefest - Firmaevent <br />
+              Båttransport - Bryllup - <strong>sightseeing</strong>
+            </p>
+          </div>
+          @*<img src="~/Images/battur-i-oslofjorden-forside.jpg" alt="Båttur i Oslofjorden med Ocean Adventure">*@
+          <img src="~/Images/sightseeing-oslofjorden.jpg" alt="Båttur i Oslofjorden med Ocean Adventure">
+        </div>
+      </div>
+    </div>
+
+</section>
+<div class="main">
+  <div class="container">
+    <section class="call_to_action">
+      <h3>Opplev Oslofjorden </h3>
+      <h4>ta med venner, familie eller bedriftskunder på en båttur i Oslofjorden</h4>
+      <a class="btn btn-primary btn-lg" href='@Url.Action("KontaktOss", "Home")'>Ja, jeg vil på båttur!</a>
+    </section>
+    <section class="portfolio_teasers_wrapper">
+      <h2 class="section_header fancy centered">
+        Forslag til båtturer<small> Velg en av våre anbefalte båtturer eller bestem selv </small>
+      </h2>
+      <div class="portfolio_strict row">
+        <div data-bind="template: { name: 'list-template', foreach: batturer }"></div>
+      </div>
+      <script type="text/html" id="list-template">
+        <div class="col-sm-6 col-md-6">
+          <div class="portfolio_item ">
+            <a data-bind="attr:  { href: '/batturer/battur/' + batturId}">
+              <figure class="batturer_thumbnail_figure">
+                <b data-bind="text: tilSted"></b>
+                <img class="batturer_thumbnail" data-bind="attr: { src: hovedbilde, alt: beskrivelse }" alt="ingress">
+                <svg viewBox="0 0 180 320" preserveAspectRatio="none">
+                  <path d="M 180,0 0,0 0,0 180,0 z" />
+                </svg>
+                <figcaption>
+                  <p data-bind="text: ingress"></p>
+                  <div class="view_button" data-bind="text: tilSted"></div>
+                </figcaption>
+              </figure>
+            </a>
+            <div class="portfolio_description">
+              <h3>
+                <a data-bind="attr:  { href: '/batturer/battur/' + batturId }, text: overskrift"></a>
+              </h3>
+              <p>
+                <b data-bind="text: fraSted + ' til ' + tilSted"></b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </script>
+    </section>
+
+
+
+    <section class="portfolio_teasers_wrapper">
+      <h2 class="section_header fancy centered luxury">
+        Ocean Adventure i "Luxury Travel Guide"<br />
+        <small> klikk på bildene for å se hva de sier om oss! (ekstern lenke)</small>
+      </h2>
+      <div class="portfolio_strict row">
+        <div class="col-sm-4 col-md-4">
+          <div class="portfolio_item">
+            <a href="http://www.corporatelivewire.com/de-luxe/guides/LuxuryEurope2015/flipviewerxpress.html?pn=2444">
+              <figure>
+                <img src="~/Images/luxury-travel-1.jpg" alt="Lenke til luxury travel guide side 1" />
+              </figure>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+          <div class="portfolio_item">
+            <a href="http://www.corporatelivewire.com/de-luxe/guides/LuxuryEurope2015/flipviewerxpress.html?pn=2446">
+              <figure>
+                <img src="~/Images/luxury-travel-2.jpg" alt="Lenke til luxury travel guide side 2" />
+              </figure>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+          <div class="portfolio_item">
+            <a href="http://www.corporatelivewire.com/de-luxe/guides/LuxuryEurope2015/flipviewerxpress.html?pn=2448">
+              <figure>
+                <img src="~/Images/luxury-travel-3.jpg" alt="Lenke til luxury travel guide side 3" />
+              </figure>
+            </a>
+          </div>
+        </div>3
+      </div>
+    </section>
+
+    @*<section class="clients_section">
+      <h2 class="section_header elegant centered">
+        Våre samarbeidspartnere<br /><small> om dere er et stort selskap og trenger litt mer plass</small>
+      </h2>
+      <div class="clients_list" data-bind="foreach: samarbeidspartnere">
+        <a data-bind="attr:  { href: '/samarbeidspartnere/samarbeidspartner/' + samarbeidspartnerId }">
+          <h2 data-bind="text: overskrift"></h2>
+        </a>
+      </div>
+    </section>*@
+
+  </div>
+</div>
+
+

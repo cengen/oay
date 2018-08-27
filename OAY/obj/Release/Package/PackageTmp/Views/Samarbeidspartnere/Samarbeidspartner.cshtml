@@ -1,0 +1,72 @@
+﻿@model OAY.Web.ViewModels.SamarbeidspartnerViewModel
+
+@{
+    ViewBag.Title = "Samarbeidspartner " + Model.Samarbeidspartner.Overskrift;
+    ViewBag.Description = "Vi samarbeider med flere andre båtselskaper. Blandt annet: " + Model.Samarbeidspartner.Overskrift;
+    ViewBag.Keywords = "Oslofjorden, Båttur, Samarbeidspartner";
+}
+
+@section scripts {
+    <script>
+    $(document).ready(function() {
+        $('.thumb').on('click', function() {
+            $('#showimagediv').attr("src", this.src);
+        });
+    });
+    </script>
+}
+<div class="main">
+    <div class="container samarbeidspartner">
+        <section class="hgroup">
+            <h1>@Model.Samarbeidspartner.Overskrift</h1>
+            <ul class="breadcrumb pull-right">
+                <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+                <li class="active">Partner - @Model.Samarbeidspartner.Overskrift</li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-sm-8 col-md-8">
+                    <section class="portfolio_slider_wrapper">
+                        <div class="flexslider" id="portfolio_slider">
+                            <div class="slides">
+                                <img id="item" src="@Url.Content(Model.Samarbeidspartner.SamarbeidspartnerImages.First().ImageFile)" alt="samarbeidspartner @Model.Samarbeidspartner.Overskrift"/>
+                            </div>
+                        </div>
+
+
+                        @*<div id="carousel" class="flexslider">
+                            <ul class="slides">
+                                @foreach (var m in Model.Samarbeidspartner.SamarbeidspartnerImages) 
+                                {
+                                    <li>
+                                        <img src="@Url.Content(m.ImageFile)"  alt="båttur i Oslofjorden, samarbeidspatner @Model.Samarbeidspartner.Overskrift" style="max-width:100%"/>
+                                    </li>
+                                }
+                            </ul>
+                        </div>*@
+                    </section>
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <article class="portfolio_details">
+                        <h2 class="section_header">Fakta om båten/selskapet</h2>
+                        <p>@Model.Samarbeidspartner.Beskrivelse</p> <br>
+                        <br>
+                        <div>
+                            <p><strong>Merke:</strong> @Model.Samarbeidspartner.Merke</p>
+                            <p><strong>Ant personer:</strong>@Model.Samarbeidspartner.AntallPersoner</p>
+                        </div>
+                       <br>
+                        @*@if (!Model.Samarbeidspartner.Link.IsNullOrEmpty())
+                        {
+                            <a href="@Model.Samarbeidspartner.Link" class="btn btn-danger center-block btn-lg">Gå til nettsiden (ekstern lenke)</a>
+                        }*@
+                    </article>
+                </div>
+
+
+            </div>
+        </section>       
+    </div>
+</div>
+

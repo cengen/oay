@@ -1,0 +1,415 @@
+﻿ @model OAY.Web.ViewModels.BloggViewModel
+
+@{
+    ViewBag.Title = "Blogg";
+}
+
+@section scripts {
+    <script>
+        $(function () {
+       function bloggpost(overskrift, innhold, id ) {
+            var self = this;
+            self.bloggpostOverskrift = ko.observable(overskrift);
+            self.bloggpostInnhold = ko.observable(innhold);
+            self.bloggpostId = ko.observable(id);
+        };      
+
+        function bloggsvar(bloggpostId, bloggsvarNavn, bloggsvarEpost, bloggsvarInnhold) {
+            var self = this;
+            self.bloggpostId = ko.observable(bloggpostId);
+            self.bloggsvarNavn = ko.observable(bloggsvarNavn);
+            self.bloggsvarEpost = ko.observable(bloggsvarEpost);
+            self.bloggsvarInnhold = ko.observable(bloggsvarInnhold);
+        };
+
+        function hvaSkjer(overskrift, innhold, dag, mnd, link) {
+            var self = this;
+            self.hvaskjerOverskrift = ko.observable(overskrift);
+            self.hvaskjerInnhold = ko.observable(innhold);
+            self.hvaskjerDag = ko.observable(dag);
+            self.hvaskjerMnd = ko.observable(mnd);
+            self.hvaskjerLink = ko.observable(link);
+        };
+
+            var viewModel = function (bloggsvar, bloggpost, hvaskjer) {
+
+                var self = this;
+                self.blogg = ko.observable("@Model.Bloggsvar");
+                self.nyeBildefiler = ko.observableArray([]);
+                self.nyttBlogginnleggBilde = ko.observable();
+                self.nyBloggpostId = ko.observable();
+                self.imageUploadInputValue = ko.observable();
+                self.nyeBilderTilOpplastning = ko.observableArray([]);
+                self.modelBloggsvar = bloggsvar;
+                self.modelBloggpost = bloggpost;
+                self.modelHvaSkjer = hvaskjer;
+                self.nyttBloggsvar = ko.observable('@Model.Bloggsvar');
+                self.bloggpostListe = ko.observableArray(@Html.Raw(Model.BloggposterJSON));
+                self.hvaskjerListe = ko.observableArray(@Html.Raw(Model.HvaSkjerListeJSON));
+                self.prefix = ko.observable('@Model.ImageUrlPrefix');
+           
+
+                self.slettBloggpost = function (bloggpost) {
+                    for (var i = 0; i < bloggpost.bloggsvarListe.length; i++ ) {
+                        self.slettBloggsvar(bloggpost.bloggsvarListe[i]);
+                    }
+                    for (var i = 0; i < bloggpost.bloggimageListe.length; i++) {
+                        self.slettBildeFraDatabase(bloggpost.bloggimageListe[i]);
+                        self.slettBildeFraImageFolder(bloggpost.bloggimageListe[i]);
+                    }
+                    bloggpostDataService.del(bloggpost).done(function (response) {
+                        self.opplastningOk();
+                        location.reload();
+                    }).fail(function (error) {
+                        self.showError("feil: " + error)
+                    });
+                };
+
+                self.slettBloggsvar = function (bloggsvar) {
+                    bloggsvarDataService.del(bloggsvar).done(function (response) {
+                    }).fail(function (error) {
+                        console.log("feil: " + error)
+                    });
+                };             
+
+                self.nyttBlogginnlegg = function () {
+                    self.bloggpostListe.unshift(new bloggpost("","","","",""));
+                };
+
+                self.slettBildeFraDatabase = function (image) {
+                    bloggimagesDataService.del(image).done(function (response) {
+                        //return bloggpostDataService.deleteImage(image);
+                     //  self.slettBildeFraImageFolder(image);
+                    }).fail(function (error) {
+                        self.showError();
+                    });
+                };
+
+                self.slettBildeFraImageFolder = function (image) {
+                    return bloggpostDataService.deleteImage(image);
+                };
+
+                self.nyHvaSkjer = function () {
+                    self.hvaskjerListe.unshift(new hvaSkjer("", "", "", "", "", ""));
+                };
+             
+
+                self.saveBloggsvar = function (bloggpost) {
+                    var valUtility = new ValidationUtility();
+                    if (valUtility.validate('kommentar-data-form')) {
+                        $('#command-buttons').hide();
+
+                        var epost = self.modelBloggsvar.bloggsvarEpost();
+                        var innhold = self.modelBloggsvar.bloggsvarInnhold();
+                      
+                        var navn = self.modelBloggsvar.bloggsvarNavn();
+                        var bloggpostId = bloggpost.bloggpostId;
+                        var nyttBloggsvar = ({"bloggpostId": bloggpostId, "bloggsvarNavn": navn, "bloggsvarEpost": epost, "bloggsvarInnhold": innhold });
+
+                        bloggsvarDataService.save(nyttBloggsvar).done(function (response) {
+                            self.opplastningOk();
+                        }).fail(function (error) {
+                            self.showError("feil: " + error);
+                        });
+                    };
+                };
+
+
+                self.saveBloggpost = function () {                
+                    var valUtility = new ValidationUtility();
+                    if (valUtility.validate('bloggpost-data-form')) {
+                        $('#bloggpost-button').hide();
+                        var bloggpost = ko.toJS(self.modelBloggpost);
+                        bloggpostDataService.save(bloggpost).done(function (response) {                          
+                            if (response.bloggpostId) {                             
+                                vm.nyBloggpostId(response.bloggpostId);
+                            }                          
+                            var antallNyeBildefiler = self.nyeBildefiler().length;
+                            if (antallNyeBildefiler > 0) {
+                                for (var i = 0; i < antallNyeBildefiler; i++) 
+                                    self.lastOppBildefilTilFolder(self.nyeBildefiler()[i]).done(function (result) {
+                                        var t = result;
+                                        self.lastOppNyttBildeTilDb(result).done(function (result) {
+                                        }).fail(function (error) {
+                                            self.showError(error + "Noe gikk galt med opplastnig av bilde til database");
+                                        });
+                                    });
+                                }//if
+                            
+                            self.opplastningOk();
+                        }).fail(function (error) {
+                            self.showError(error + "Kunne ikke lagre båttur");
+                        });                       
+                    }//if
+                };
+
+                self.saveNyHvaSkjer = function () {
+                    var hvaskjer = ko.toJS(self.modelHvaSkjer);
+                    hvaskjerDataService.save(hvaskjer).done(function (response){
+                        self.opplastningOk();
+                    }).fail(function (error) {
+                        self.showError(error + "Kunne ikke lagre 'Hva skjer' hendelse");
+                    });
+                };
+
+                self.lastOppBildefilTilFolder = function (fil) {
+                    var data = new FormData();
+                    data.append('image', fil);
+                    var bloggid = self.nyBloggpostId();
+                    data.append('id', bloggid);
+                    return bloggpostDataService.saveImage(data);
+                };
+
+                self.lastOppNyttBildeTilDb = function (data) {
+                    var parts = data.imageUrl.split('/');
+                    var url = parts[parts.length - 1];
+                    var image = new Object();
+                    image.imagefile = url;
+                    image.imageId = 0;
+                    image.bloggpostId = self.nyBloggpostId();
+                    return bloggimagesDataService.save(image);
+                };
+
+                self.lagreBildefil = function () {
+                    var file = $('.image-upload')[0].files[0];
+                    self.readURL(file);
+                    self.nyeBildefiler.push(file);
+                };
+
+                self.readURL = function (input) {
+                    var reader = new FileReader();
+                    var counter = vm.nyeBildefiler().length;
+                    reader.onload = function (e) {
+                        $('#bilde_' + counter).attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input);
+                };
+
+                self.showImageUpload = function () {
+                    $('#lastOppBilde-button').hide();
+                    $('#upload-form-container').removeClass('none');
+                };
+
+                self.hideImageUpload = function () {
+                    $('#lastOppBilde-button').show();
+                    $('#upload-form-container').addClass('none');
+                };
+
+                self.opplastningOk = function () {
+                        self.nullUtFelt();
+                        location.reload();
+                };
+
+                self.showError = function (error) {                
+                    console.log("noe gik feil ved opplastning");
+                };
+
+                self.nullUtFelt = function () {
+                    self.nyeBildefiler.removeAll();
+                    self.imageUploadInputValue(null);
+                    self.hideImageUpload();
+                };
+
+                self.slettBildeFraNyeBilderListe = function (image) {
+                    self.nyeBildefiler.remove(image);
+                };
+
+               
+         };
+        var vm = new viewModel(new bloggsvar(), new bloggpost(), new hvaSkjer());
+        ko.applyBindings(vm);
+    });
+</script>
+}
+
+
+<div class="main">
+     <div class="container">
+           <section class="hgroup">
+               <h1 class="section_header fancy centered">Nyheter, oppdateringer og ting & tang fra Oslofjorden.</h1>
+               <h2 class="section_header fancy centered"><small>Om våre turer og våre gjester.</small></h2>
+               <ul class="breadcrumb pull-right">
+                   <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+                    <li class="active">Blogg</li>
+               </ul>
+          </section>
+         <section>
+             <div class="row">
+                 <div id="leftcol" class="col-sm-8 col-md-8">
+                     @*@if(Request.IsAuthenticated)
+                     {*@
+                         <div class="panel-group service_teaser" id="accordion">
+                             <div class="panel panel-default">
+                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseNyttBlogginnlegg">
+                                     <div class="panel-heading">
+                                         <h4 class="panel-title">
+                                             Nytt blogginnlegg
+                                         </h4>
+                                     </div>
+                                 </a>
+                                 <div id="collapseNyttBlogginnlegg" class="panel-collapse collapse service_teaser">
+                                     <div class="panel-body">
+                                         <form class="post" id="bloggpost-data-form">
+                                             <div class="post_content service_details col-sm-12 col-md-12">
+                                                 <button id="lastOppBilde-button" data-bind="click: showImageUpload" class="btn btn-large push-down">
+                                                     <i class="icon-upload"></i>Legg til bilde
+                                                 </button>
+                                                 <div id="upload-form-container" class="none">
+                                                     <input id="input-image-upload" class="image-upload" type="file" name="image" data-bind="event: { change: lagreBildefil }" />
+                                                     <div id="nye-bilder-container" data-bind="foreach: nyeBildefiler">
+                                                         <div class="well col-sm-4 col-md-4">
+                                                             <img data-bind="attr: { id: 'bilde_' + $index() }" src="~/Images/Batturer/no-image.jpg" />
+                                                             <button type="button" class="btn btn-danger" data-bind="click: $parent.slettBildeFraNyeBilderListe"> Slett</button>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <br />
+                                                 <div class="form-group">
+                                                     <label for="bloggpostOverskrift">Overskrift</label>
+                                                     <input id="bloggpostOverskrift" class="form-control" data-bind="value: modelBloggpost.bloggpostOverskrift" style="width:100%" />
+                                                 </div>
+                                                 <div class="form-group">
+                                                     <label for="bloggpostInnhold">Innhold</label>
+                                                     <textarea id="bloggpostInnhold" class="form-control" data-bind="value: modelBloggpost.bloggpostInnhold" style="width:100%" rows="8"></textarea>
+                                                 </div>
+                                                 <button data-bind="click: saveBloggpost" type="button" class="btn btn-primary btn-large push-right cmd" id="bloggpost-button">Lagre </button>
+                                             </div>
+                                         </form>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     //}
+                     <div data-bind="foreach: bloggpostListe.slice(0).reverse()">
+                         <div>
+                             <h2 class="section_header" data-bind="text: bloggpostOverskrift"> </h2>
+                             @*@if (Request.IsAuthenticated)
+                             {
+                                 <a class="btn btn-primary btn-danger" data-bind="click: $root.slettBloggpost">Slett bloggpost</a>
+                             }*@
+                             <div data-bind="foreach: bloggimageListe">
+                                 <figure>
+                                     <img alt="@Model.Bloggpost.BloggpostOverskrift" data-bind="attr: { src: $root.prefix() + imageFile }">
+                                 </figure>
+                             </div>
+                             <p data-bind="text: bloggpostInnhold"></p>
+                             @*<i class="fa-time" data-bind="date: opprettet, dateformat: 'd,MMM,Y' "></i>*@
+                         </div>
+                         <div id="post_comments">
+                             <div data-bind="foreach: bloggsvarListe.slice(0).reverse()">
+                                 <div class="comment">
+                                     <div class="row">
+                                         <blockquote>
+                                             <p class="comment_name" data-bind="text: bloggsvarNavn">
+                                             </p>
+                                             <small class="the_comment" data-bind="text: bloggsvarInnhold"> </small>
+                                         </blockquote>
+                                         @*@if (Request.IsAuthenticated)
+                                         {
+                                             <a class="btn btn-primary btn-sm btn-danger pull-right" data-bind="click: $root.slettBloggsvar">Slett kommentar</a>
+                                         }*@
+                                     </div>
+                                 </div>
+                             </div>
+                             @*@if (!Request.IsAuthenticated)
+                             {*@
+                                 <a class="btn btn-primary command-buttons" data-toggle="collapse" data-bind="attr: { href: '#collapse' + $index() }">
+                                     Ny kommentar
+                                 </a>
+                                 <div class="collapse" data-bind="attr: { id: 'collapse' + $index() }">
+                                     <div class="well">
+                                         <form id="kommentar-data-form">
+                                             <div class="row">
+                                                 <div class="col-sm-4 col-md-4">
+                                                     <input class="form-control" name="name" placeholder="Navn" type="text" data-bind="value: $root.modelBloggsvar.bloggsvarNavn">
+                                                 </div>
+                                             </div>
+                                             <div class="row">
+                                                 <div class="col-sm-8 col-md-8">
+                                                     <br />
+                                                     <textarea rows="7" placeholder="Kommentar" class="form-control" data-bind="value: $root.modelBloggsvar.bloggsvarInnhold"></textarea>
+                                                 </div>
+                                             </div>
+                                             <div class="row">
+                                                 <br />
+                                                 <div class="col-sm-8 col-md-8">
+                                                     <a data-bind="click: $root.saveBloggsvar" class="btn send btn-primary" href="#">Legg til kommentar</a>
+                                                 </div>
+                                             </div>
+                                         </form>
+                                     </div>
+                                 </div>
+                          @*   }*@
+                         </div>
+
+                     </div>
+
+                 </div>
+                 <div id="sidebar" class="col-sm-4 col-md-4">
+                     <aside>
+                         <div class="service_teaser vertical">
+                             <div class="service_details">
+                                 <h2 class="section_header skincolored">Hva skjer i <b>Oslofjorden?</b><small>sommer 2015</small></h2>
+                                 <ul class="media-list" data-bind="foreach: hvaskjerListe">
+                                     <li class="media">
+                                         <a href="#" class="media-photo" style="background-image:url(#)"></a>
+                                         <a href="#" class="media-date" data-bind="html: dag + '<span>' + mnd + '</span>'"></a>
+                                         <h5 class="media-heading">
+                                             <a data-bind="attr: { href: link }, text: overskrift"></a>
+                                         </h5>
+                                         <p data-bind="text: innhold"></p>
+                                     </li>
+                                 </ul>
+                                 @*@if (Request.IsAuthenticated)
+                                 {*@
+                                     <div class="panel-group service_teaser">
+                                         <div class="panel panel-default">
+                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseNyttHvaSkerjinnlegg">
+                                                 <div class="panel-heading">
+                                                     <h4 class="panel-title">
+                                                         Ny "Hva skjer" hendelse
+                                                     </h4>
+                                                 </div>
+                                             </a>
+                                             <div id="collapseNyttHvaSkerjinnlegg" class="panel-collapse collapse service_teaser">
+                                                 <div class="panel-body">
+                                                     <form class="post" id="hvaskjer-data-form">
+                                                         <div class="post_content service_details">
+                                                             <div class="form-group">
+                                                                 <label for="hvaskjerOverskrift">Overskrift</label>
+                                                                 <input id="hvaskjerOverskrift" class="form-control" data-bind="value: modelHvaSkjer.overskrift" style="width:100%" />
+                                                             </div>
+                                                             <div class="form-group">
+                                                                 <label for="hvaskjerDag">Dag (dato)</label>
+                                                                 <input id="hvaskjerDag" class="form-control" placeholder="Dag (dato)" data-bind="value: modelHvaSkjer.dag" />
+                                                             </div>
+                                                             <div class="form-group">
+                                                                 <label for="hvaskjerManed">Måned)</label>
+                                                                 <input id="hvaskjerManed" class="form-control" placeholder="Måned ( 3 bokstaver)" data-bind="value: modelHvaSkjer.mnd" />
+                                                             </div>
+                                                             <div class="form-group">
+                                                                 <label for="hvaskjerLink">Link</label>
+                                                                 <input id="hvaskjerLink" class="form-control" placeholder="Link (til ekstern side)" data-bind="value: modelHvaSkjer.link" style="width:100%" />
+                                                             </div>
+                                                             <div class="form-group">
+                                                                 <label for="hvaskjerInnhold">Innhold</label>
+                                                                 <textarea id="hvaskjerInnhold" class="form-control" rows="3" data-bind="value: modelHvaSkjer.innhold" style="width:100%"></textarea>
+                                                             </div>
+                                                             <button data-bind="click: saveNyHvaSkjer" type="button" class="btn btn-primary btn-large push-right cmd">Lagre ny hendelse </button>
+                                                         </div>
+                                                     </form>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                               @*  }*@
+
+                             </div>
+                         </div>
+                     </aside>
+                 </div>
+             </div>
+
+         </section>
+     </div> 
+</div>

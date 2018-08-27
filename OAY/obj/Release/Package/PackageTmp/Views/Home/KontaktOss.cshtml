@@ -1,0 +1,122 @@
+﻿@model OAY.Models.Mail
+@{
+    ViewBag.Title = "Kontakt oss";
+    ViewBag.Description = "Bestill en båttur i Oslofjorden med Ocean Adventure. Leie av Yacht med kaptein. Alle rettigheter ombord";
+    ViewBag.Keywords = "Oslofjorden, Båttur, Yacht";
+}
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            if ('@ViewBag.Status' == 'Sent') {
+                $('#success-msg-container').show();
+                setTimeout(function () { $("#success-msg-container").hide(); }, 5000);
+            }
+            if ('@ViewBag.Status' == 'Feil') {
+                $('#fail-msg-container').show();
+                setTimeout(function () { $("#fail-msg-container").hide(); }, 5000);
+            }
+        });
+    </script>
+}
+
+
+
+<div class="google-maps" style="width: 100%">
+    <!--[if IE]>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8001.158969921542!2d10.732603699999983!3d59.910738599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e87289c5173%3A0x5920a55621263ea4!2sHon%C3%B8rbrygga%2C+0160+Oslo!5e0!3m2!1sno!2sno!4v1433426867643" height="300" frameborder="0" style="border: 0; width: 100%"></iframe>
+    <![endif]-->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8001.158969921542!2d10.732603699999983!3d59.910738599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e87289c5173%3A0x5920a55621263ea4!2sHon%C3%B8rbrygga%2C+0160+Oslo!5e0!3m2!1sno!2sno!4v1433426867643" style="border: 0; width: 100%; height: 300px"></iframe>
+</div>
+
+<div class="main">
+    <div class="container">
+        <section>
+            <div class="row">
+               
+                <div id="success-msg-container" class="alert alert-success col-sm-12 col-md-12">
+                    <h4>Takk for din henvendelse. Vi kontakter deg så fort som mulig</h4>
+                    <h4>@ViewData["Tekst"] </h4>
+                </div>
+                <div id="fail-msg-container" class="alert alert-danger col-sm-12 col-md-12">
+                    <h4>Feil utfylt. Vennligst prøv igjen</h4>
+                </div>
+
+                <div class="office_address col-sm-4 col-md-4">
+                    <div class="team_member">
+                        <img class="logo" src="~/Images/Logo/logo.png" alt="logo Ocean Adventure">
+                        <h5>Ocean Adventure</h5>
+                        <small>Båttur på Oslofjorden</small><br><br>
+                        <div class="team_social">
+                            <a href="https://www.facebook.com/OceanAdventureYachting?fref=ts"><i class="fa fa-facebook"></i></a>
+                            <a href="https://no.linkedin.com/pub/arild-foss-www-oceanadventure-no/75/447/312/no"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://twitter.com/ocean_firmapost"><i class="fa fa-twitter"></i></a>
+                        </div>
+                        <address>
+                            <a href="https://goo.gl/maps/3SdpW">
+                                (Påstigning/henting Oslo)<br/>
+                                Honørbrygga ved Rådhusplassen<br>
+                                Oslo
+                            </a><br/><br/>
+                            <a href="https://www.google.no/maps/place/Huk+Aveny+1,+0287+Oslo">
+                                (Båtplass)<br/>
+                                Huk Aveny 1<br>
+                                Oslo
+                            </a><br>
+                            <p><a href="tel:+4793037700"></a> (+47) 93 03 77 00
+                            </p>
+                        </address>
+                        <address>
+                            <p> <a href="mailto:firmapost@oceanadventureyachting.no"> firmapost@oceanadventureyachting.no</a>
+                            </p>
+                        </address>
+                    </div>
+                </div>
+
+
+                <div class="contact_form col-sm-8 col-md-8">
+                    <h2 class="section_header elegant centered">Kontakt oss på epost </h2>
+                    <div class="centered">                     
+                        <a href="mailto:firmapost@oceanadventureyachting.no"> firmapost@oceanadventureyachting.no</a>
+                      @*<a href="mailto:cathrin@oceanadventureyachting.no"> cathrin@oceanadventureyachting.no</a>*@
+                    </div>
+                    @*<div class="or">
+                        <div class="or_l"></div>
+                        <span>eller</span>
+                        <div class="or_r"></div>
+                    </div>
+                    <h2 class="section_header elegant centered"><small>send oss en beskjed ved å fylle ut skjemaet under</small></h2>
+
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new {id = "epost-form-no"}))
+                    {
+                        @Html.ValidationSummary()
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                @Html.LabelFor(m => m.Fra)
+                                @Html.TextBoxFor(m => m.Fra, new {@class = "form-control", @type = "email"})
+                                @Html.ValidationMessageFor(m => m.Fra)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                @Html.LabelFor(m => m.Emne)
+                                @Html.TextBoxFor(m => m.Emne, new {@class = "form-control"})
+                                @Html.ValidationMessageFor(m => m.Emne)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                @Html.LabelFor(m => m.Melding)
+                                @Html.TextAreaFor(m => m.Melding, new {@class = "form-control"})
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <br/>
+                                <input type="submit" id="submit_epost_btn" class="btn btn-primary" name="submit" value="Send"/>
+                            </div>
+                        </div>
+                    }*@
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

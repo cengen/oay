@@ -1,0 +1,69 @@
+﻿@model OAY.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="main">
+<div class="container">
+    <section class="hgroup">
+        <h1>Administrasjon for oceanadventure.no</h1>
+        <ul class="breadcrumb pull-right">
+            <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+            <li class="active">Logg inn</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="row">
+       
+
+    <div class="col-md-6 col-md-offset-3">
+        <div class="signup">
+            <form>
+
+                <fieldset>
+                    <div class="social_sign">
+                        <h3>Admin meny</h3>
+                    </div>
+                    <p class="sign_title"></p>
+                    <div class="row">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-8">
+
+                            <ul class="nav nav-pills nav-stacked">
+                                <li>@Html.ActionLink("Endre en båttur", "BatturerSomKanEndres", "Batturer")</li>
+                                @*<li>@Html.ActionLink("Ny båttur", "NyBattur", "Batturer")</li>*@
+                                <li>@Html.ActionLink("Endre meny", "EndreMeny", "Meny")</li>
+                                @*<li>@Html.ActionLink("Endre/Ny blogg", "Blogg", "Bloggpost")</li>*@
+                                <li>@Html.ActionLink("Endre pris", "EndrePrisInfo", "Pris")</li>
+                                @*<li>@Html.ActionLink("Endre/Nytt bilde", "EndreBildegalleri", "Bildegalleri")</li>*@
+                                @*<li>@Html.ActionLink("Ny samarbeidspartner", "NySamarbeidspartner", "Samarbeidspartnere")</li>
+                                            <li>@Html.ActionLink("Endre en samarbeidspartner", "Samarbeidspartnere", "Samarbeidspartnere")</li>*@
+                                @*TODO*@
+                                @*<li>@Html.ActionLink("Div admin verdier", "EndreDivAdmin", "Home")</li>*@
+                            </ul>
+
+                        </div>
+                        <div class="col-lg-2"></div>
+                    </div>
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+
+            </div>
+        </section>
+    </div>
+</div>
+    
+@section Scripts {
+<script src="~/Scripts/lib/jquery.validate.min.js"></script>
+<script src="~/Scripts/lib/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/lib/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+
+

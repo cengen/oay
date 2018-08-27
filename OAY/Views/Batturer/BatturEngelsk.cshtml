@@ -1,0 +1,56 @@
+﻿@model OAY.Web.ViewModels.BatturViewModel
+
+
+@section scripts {
+<script>
+    $(document).ready(function() {
+        $('.thumb').on('click', function() {
+            $('#showimagediv').attr("src", this.src);
+        });
+    });
+</script>
+}
+
+<div class="main">
+    <div class="container">
+        <section class="call_to_action">
+            <h3>@Model.Battur.TilSted</h3>
+         
+        </section>
+            <section class="portfolio_slider_wrapper">
+                <div class="flexslider">
+                    <div class="item">
+                        <img id="showimagediv" src="@Url.Content(Model.Hovedbilde)" />
+                    </div>
+                </div>
+                <div id="carousel" class="flexislider">
+                    <ul class="slides">
+                        @foreach (var m in Model.Bilder)
+                        {
+                            <li>
+                                <img class="thumb" src="@Url.Content(m.ImageFile)" />
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <div class="row">
+                    <div class="col-sm-9 col-md-9">
+                        <h2 class="section_header">Information about the boattrip</h2>
+                        <p>@Model.Battur.EngelskBeskrivelse</p>
+                    </div>
+                    <div class="well col-sm-3 col-md-3">
+                        <p><strong>Min time:  </strong><span>@Model.Battur.MinimumTid</span> hours</p>
+                        <p><strong>From:    </strong><span>@Model.Battur.FraSted</span></p>
+                        <p><strong>To:    </strong><span>@Model.Battur.TilSted</span></p>
+                        <p><strong>Price:   </strong><span>@Model.Pris from</span> (for <span>@Model.Battur.MinimumTid</span> hours)</p>
+                    </div>
+                </div>
+                <ul class="pager">
+                    <li class="previous"><a href="@Url.Action("BatturEngelsk", "batturer", new { id = Model.ForrigeBattur })">← Previous</a></li>
+                    <li class="next"><a href="@Url.Action("BatturEngelsk", "batturer", new { id = Model.NesteBattur })">Next →</a></li>
+                </ul>
+            </section>
+</div>
+</div>

@@ -1,0 +1,81 @@
+﻿@model OAY.Web.ViewModels.PrisInfoViewModel
+
+@{
+    ViewBag.Title = "Pris";
+    ViewBag.Description = "Lunsjcruise i Oslofjorden. Båtturer i Oslos skjærgård. Lunsj med kollegaer eller venner";
+    ViewBag.Keywords = "Oslofjorden, Båttur, Lunsjcruise, Oslo";
+}
+
+@section scripts {
+    <script>
+
+        @*$(function () {
+            var viewModel = function () {
+                var self = this;
+                self.timepris = ko.observableArray(@Html.Raw(Model.ForrettListeJson));
+                self.illustrasjonsbilde = ko.observableArray(@Html.Raw(Model.HovedrettListeJson));
+               
+
+            };
+            var vm = new viewModel();
+
+            ko.applyBindings(vm);
+
+        });*@
+    </script>
+}
+
+
+<div class="main">
+    <div class="container samarbeidspartner">
+        <section class="hgroup">
+            <h1 class="section_header fancy centered">Prisliste @DateTime.Now.Year</h1>
+
+            <ul class="breadcrumb pull-right">
+                <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+                <li class="active">Pris</li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-sm-8 col-md-8">
+                    <section class="portfolio_slider_wrapper">
+                        <div class="flexslider" id="portfolio_slider">
+                            <div class="slides">
+                                
+                                <img src="@Url.Content(Model.ImagePath)"  alt="yacht på oslofjorden" />
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <article class="portfolio_details">
+                      <h2 class="section_header">Priser for høysesong @DateTime.Now.Year</h2>
+                        <p>
+                            Høysesongen er fra. 1 mai til 31 august<br/>
+                         
+                        </p> <br>
+                        <br>
+                        <div>
+                            <p>
+                                <strong>Timepris:</strong> @Model.PrisInfo.Timepris ,- eksl moms <br />
+                                 (Høysesong 3900,- eksl moms) <br />
+                                <small>10 % moms kommer i tillegg</small>
+                            </p>
+                            <p>
+                                <strong>Leietid:</strong> Minimum @Model.PrisInfo.MinimumsTid timer. <br />
+
+                            </p>
+                        </div>
+                        <br>
+
+                    </article>
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+</div>
+

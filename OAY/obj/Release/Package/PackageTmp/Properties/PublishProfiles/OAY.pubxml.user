@@ -1,0 +1,1322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAI/kgfSYKAEenF+jtnM/YzgAAAAACAAAAAAADZgAAwAAAABAAAABx3VTnk3AqtKhsHkmSZGglAAAAAASAAACgAAAAEAAAALvCIQc4OJ/qXaq7/BKpMBQYAAAAo/JdJtfjhvn7mWTUdZhEt+8GUo5RB/O2FAAAAJ1z7yKrZDW/ghLRZPadeWhIXAL/</EncryptedPassword>
+    <_PublishTargetUrl>ftp://web06.fastname.no/www</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>02/03/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>02/03/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>07/12/2015 19:04:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>10/03/2016 14:26:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>10/03/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>09/03/2016 12:00:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>10/03/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>10/03/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>09/03/2016 11:57:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.WebPages.OAuth.dll">
+      <publishTime>09/07/2013 11:05:10</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>03/08/2014 20:33:56</publishTime>
+    </File>
+    <File Include="bin/OAY.Data.dll">
+      <publishTime>04/02/2017 15:46:50</publishTime>
+    </File>
+    <File Include="bin/OAY.Models.dll">
+      <publishTime>04/02/2017 15:46:49</publishTime>
+    </File>
+    <File Include="bin/OAY.Web.dll">
+      <publishTime>02/04/2017 15:54:43</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>11/02/2014 15:26:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.Data.dll">
+      <publishTime>09/07/2013 11:05:10</publishTime>
+    </File>
+    <File Include="bin/WebMatrix.WebData.dll">
+      <publishTime>09/07/2013 11:05:12</publishTime>
+    </File>
+    <File Include="Content/animate.css">
+      <publishTime>11/03/2015 14:22:34</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>10/03/2015 14:47:38</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>10/03/2015 14:47:38</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>10/03/2015 14:47:38</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>10/03/2015 14:47:38</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>10/03/2015 14:47:38</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap-style.css">
+      <publishTime>05/06/2015 14:16:34</publishTime>
+    </File>
+    <File Include="Content/css/bootstrap-style.min.css">
+      <publishTime>05/06/2015 14:16:34</publishTime>
+    </File>
+    <File Include="Content/css/style.css">
+      <publishTime>08/06/2015 10:54:10</publishTime>
+    </File>
+    <File Include="Content/flexslider.css">
+      <publishTime>04/06/2015 15:04:08</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/css/font-awesome.css">
+      <publishTime>05/06/2015 10:46:24</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/css/font-awesome.min.css">
+      <publishTime>05/06/2015 10:46:24</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>11/03/2015 14:34:38</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>11/03/2015 14:34:38</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>11/03/2015 14:34:38</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>11/03/2015 14:34:38</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/fonts/FontAwesome.otf">
+      <publishTime>11/03/2015 14:34:38</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/bordered-pulled.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/core.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/fixed-width.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/font-awesome.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/icons.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/larger.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/list.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/mixins.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/path.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/rotated-flipped.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/spinning.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/stacked.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/less/variables.less">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/font-awesome.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_bordered-pulled.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_core.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_fixed-width.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_icons.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_larger.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_list.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_mixins.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_path.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_rotated-flipped.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_spinning.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_stacked.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/font-awesome/scss/_variables.scss">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/glyphicons-halflings-regular.eot">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/glyphicons-halflings-regular.svg">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>11/03/2015 14:34:40</publishTime>
+    </File>
+    <File Include="Content/Fonts/glyphicons-halflings-regular.woff">
+      <publishTime>11/03/2015 14:34:42</publishTime>
+    </File>
+    <File Include="Content/prettyPhoto.css">
+      <publishTime>05/04/2015 18:06:58</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>09/03/2015 12:33:02</publishTime>
+    </File>
+    <File Include="Content/style_old.css">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/404.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/accent.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/battur-i-oslofjorden-forside.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/battur-i-oslofjorden.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/1-31613.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/1-574734.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/1-728449.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/1-73083.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/10-340342.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/10-37177.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/10-448321.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/10-915106.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/11-118183.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/11-187994.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/11-511855.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/11-529327.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/12-137047.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/12-192688.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/12-313046.jpg">
+      <publishTime>05/06/2015 10:23:20</publishTime>
+    </File>
+    <File Include="Images/Batturer/12-603831.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/12-694339.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/3-120845 %281%29.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/3-120845.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/3-35736.jpg">
+      <publishTime>05/06/2015 14:09:12</publishTime>
+    </File>
+    <File Include="Images/Batturer/3-68506 %281%29.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/3-68506.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/3-817681 %281%29.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/3-817681.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/3-852547 %281%29.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/3-852547.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/4-131700.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/4-607298.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/4-628072.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/4-680411.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/4-828536.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/4-831759.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/4-9550.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/4-983575.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/5-226484.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/5-250856.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/5-554020.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/5-644528.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/5-707361.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/5-784072.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/5-815340.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/5-923320.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/6-631816.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/6-74524.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/6-861867.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/6-934980.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/8-291136.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/8-702280.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/8-757921.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/8-810260.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/9-144177.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/9-147479.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/9-579319.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/9-841013.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden1.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden10.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden11.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden12.jpg">
+      <publishTime>04/05/2015 20:08:32</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden2.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden3.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden4.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden5.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden6.jpg">
+      <publishTime>04/05/2015 20:08:32</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden7.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden8.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/battur-i-oslofjorden9.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Batturer/no-image-large.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/no-image-large.png">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Batturer/no-image.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Bildegalleri/1.JPG">
+      <publishTime>01/04/2017 13:47:26</publishTime>
+    </File>
+    <File Include="Images/Bildegalleri/2.JPG">
+      <publishTime>01/04/2017 13:47:44</publishTime>
+    </File>
+    <File Include="Images/Bildegalleri/3.jpg">
+      <publishTime>01/04/2017 13:48:01</publishTime>
+    </File>
+    <File Include="Images/Bildegalleri/4.jpg">
+      <publishTime>01/04/2017 13:48:23</publishTime>
+    </File>
+    <File Include="Images/Bildegalleri/5.jpg">
+      <publishTime>01/04/2017 14:11:15</publishTime>
+    </File>
+    <File Include="Images/Bildegalleri/flybridge.JPG">
+      <publishTime>01/04/2017 08:46:48</publishTime>
+    </File>
+    <File Include="Images/Bildegalleri/IMG_1319.JPG">
+      <publishTime>01/04/2017 08:46:00</publishTime>
+    </File>
+    <File Include="Images/Bildegalleri/rib.JPG">
+      <publishTime>01/04/2017 08:46:26</publishTime>
+    </File>
+    <File Include="Images/Bildegalleri/seafood.JPG">
+      <publishTime>01/04/2017 08:47:37</publishTime>
+    </File>
+    <File Include="Images/Blogg/4-784006.png">
+      <publishTime>01/06/2015 12:16:32</publishTime>
+    </File>
+    <File Include="Images/Blogg/5-163531.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Blogg/6-534756.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Blogg/7-208096.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Blogg/7-709747.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Blogg/8-788424.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Blogg/alias.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Blogg/nyRib.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/bullet.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/english.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/forsideBildeUtenTekst.jpg">
+      <publishTime>03/06/2015 22:19:38</publishTime>
+    </File>
+    <File Include="Images/heroAccent.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/hovedbilde.jpg">
+      <publishTime>03/06/2015 22:33:16</publishTime>
+    </File>
+    <File Include="Images/logo.png">
+      <publishTime>11/03/2015 14:17:38</publishTime>
+    </File>
+    <File Include="Images/Logo/batutleie_oslo_logo.swf">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Logo/logo-ocean-adventure-yachting.jpg">
+      <publishTime>06/06/2015 11:48:06</publishTime>
+    </File>
+    <File Include="Images/Logo/logo.png">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/luxury-travel-1.jpg">
+      <publishTime>06/06/2015 10:32:18</publishTime>
+    </File>
+    <File Include="Images/luxury-travel-2.jpg">
+      <publishTime>06/06/2015 10:31:56</publishTime>
+    </File>
+    <File Include="Images/luxury-travel-3.jpg">
+      <publishTime>06/06/2015 10:31:30</publishTime>
+    </File>
+    <File Include="Images/luxury-travel-guide-logo.jpg">
+      <publishTime>03/06/2015 14:13:02</publishTime>
+    </File>
+    <File Include="Images/Meny/aperitiff.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Meny/dessert.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Meny/digestiff.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Meny/diverse.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Meny/forrett.png">
+      <publishTime>01/06/2015 12:15:04</publishTime>
+    </File>
+    <File Include="Images/Meny/hovedrett.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Meny/hvitvin.png">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Meny/koldtbord.png">
+      <publishTime>01/06/2015 12:15:04</publishTime>
+    </File>
+    <File Include="Images/Meny/matOgDrikke.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Meny/meny.png">
+      <publishTime>01/06/2015 12:15:22</publishTime>
+    </File>
+    <File Include="Images/Meny/rodvin.jpg">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Meny/varmretter.png">
+      <publishTime>01/06/2015 12:15:04</publishTime>
+    </File>
+    <File Include="Images/no-image-large.png">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/norsk.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/orderedList0.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/orderedList1.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/orderedList2.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/orderedList3.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/orderedList4.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/orderedList5.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/orderedList6.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/orderedList7.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/orderedList8.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/orderedList9.png">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Images/Pris/oa-oslofjorden.jpg">
+      <publishTime>01/04/2017 13:49:09</publishTime>
+    </File>
+    <File Include="Images/Samarbeidspartnere/cruisebatene-logo.png">
+      <publishTime>01/06/2015 12:15:04</publishTime>
+    </File>
+    <File Include="Images/Samarbeidspartnere/logo.png">
+      <publishTime>01/06/2015 12:15:02</publishTime>
+    </File>
+    <File Include="Images/Samarbeidspartnere/Martinique1.jpg">
+      <publishTime>01/06/2015 21:14:16</publishTime>
+    </File>
+    <File Include="Images/Samarbeidspartnere/Martinique2.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Samarbeidspartnere/Martinique3.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Samarbeidspartnere/Martinique4.jpg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/Samarbeidspartnere/no-image-large.png">
+      <publishTime>01/06/2015 21:14:56</publishTime>
+    </File>
+    <File Include="Images/Samarbeidspartnere/no-image.png">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Images/sightseeing-oslofjorden.jpg">
+      <publishTime>06/06/2015 10:25:48</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Properties/PublishProfiles/OAY.pubxml.user">
+      <publishTime>02/04/2017 15:48:27</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/batturerDataService.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/batturerDataService.min.js">
+      <publishTime>01/06/2015 12:00:16</publishTime>
+    </File>
+    <File Include="scripts/app/batturerDataService.min.js.map">
+      <publishTime>01/06/2015 12:00:18</publishTime>
+    </File>
+    <File Include="scripts/app/batturimagesDataService.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/batturimagesDataService.min.js">
+      <publishTime>01/06/2015 12:00:24</publishTime>
+    </File>
+    <File Include="scripts/app/batturimagesDataService.min.js.map">
+      <publishTime>01/06/2015 12:00:26</publishTime>
+    </File>
+    <File Include="scripts/app/batturKategorierDataService.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/batturKategorierDataService.min.js">
+      <publishTime>01/06/2015 12:00:34</publishTime>
+    </File>
+    <File Include="scripts/app/batturKategorierDataService.min.js.map">
+      <publishTime>01/06/2015 12:00:34</publishTime>
+    </File>
+    <File Include="scripts/app/bildegalleriDataService.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/bloggimagesDataService.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/bloggimagesDataService.min.js">
+      <publishTime>01/06/2015 12:00:44</publishTime>
+    </File>
+    <File Include="scripts/app/bloggimagesDataService.min.js.map">
+      <publishTime>01/06/2015 12:00:46</publishTime>
+    </File>
+    <File Include="scripts/app/bloggpostDataService.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/bloggpostDataService.min.js">
+      <publishTime>01/06/2015 12:00:52</publishTime>
+    </File>
+    <File Include="scripts/app/bloggpostDataService.min.js.map">
+      <publishTime>01/06/2015 12:00:52</publishTime>
+    </File>
+    <File Include="scripts/app/bloggsvarDataService.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/bloggsvarDataService.min.js">
+      <publishTime>01/06/2015 12:00:58</publishTime>
+    </File>
+    <File Include="scripts/app/bloggsvarDataService.min.js.map">
+      <publishTime>01/06/2015 12:01:00</publishTime>
+    </File>
+    <File Include="scripts/app/hvaskjerDataService.js">
+      <publishTime>01/06/2015 20:39:36</publishTime>
+    </File>
+    <File Include="scripts/app/hvaskjerDataService.min.js">
+      <publishTime>01/06/2015 12:01:06</publishTime>
+    </File>
+    <File Include="scripts/app/hvaskjerDataService.min.js.map">
+      <publishTime>01/06/2015 20:39:36</publishTime>
+    </File>
+    <File Include="scripts/app/main.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/main.min.js">
+      <publishTime>05/06/2015 15:54:14</publishTime>
+    </File>
+    <File Include="scripts/app/main.min.js.map">
+      <publishTime>05/06/2015 15:54:16</publishTime>
+    </File>
+    <File Include="scripts/app/menyDataService - Copy %282%29.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/menyDataService - Copy %282%29.min.js.map">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/menyDataService - Copy.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/menyDataService - Copy.min.js.map">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/menyDataService.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/menyDataService.min.js">
+      <publishTime>01/06/2015 12:01:16</publishTime>
+    </File>
+    <File Include="scripts/app/menyDataService.min.js.map">
+      <publishTime>01/06/2015 12:01:16</publishTime>
+    </File>
+    <File Include="scripts/app/prisDataService.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/samarbeidspartnereDataService.js">
+      <publishTime>01/06/2015 20:39:32</publishTime>
+    </File>
+    <File Include="scripts/app/samarbeidspartnereDataService.min.js">
+      <publishTime>01/06/2015 21:02:24</publishTime>
+    </File>
+    <File Include="scripts/app/samarbeidspartnereDataService.min.js.map">
+      <publishTime>01/06/2015 21:02:24</publishTime>
+    </File>
+    <File Include="scripts/app/samarbeidspartnerimagesDataService.js">
+      <publishTime>01/06/2015 15:10:50</publishTime>
+    </File>
+    <File Include="scripts/app/samarbeidspartnerimagesDataService.min.js">
+      <publishTime>01/06/2015 21:02:32</publishTime>
+    </File>
+    <File Include="scripts/app/samarbeidspartnerimagesDataService.min.js.map">
+      <publishTime>01/06/2015 21:02:32</publishTime>
+    </File>
+    <File Include="scripts/app/validationUtility.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/validationUtility.min.js">
+      <publishTime>01/06/2015 12:01:38</publishTime>
+    </File>
+    <File Include="scripts/app/validationUtility.min.js.map">
+      <publishTime>01/06/2015 12:01:38</publishTime>
+    </File>
+    <File Include="scripts/app/_mixins.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/app/_mixins.min.js">
+      <publishTime>01/06/2015 21:02:42</publishTime>
+    </File>
+    <File Include="scripts/app/_mixins.min.js.map">
+      <publishTime>01/06/2015 21:02:44</publishTime>
+    </File>
+    <File Include="scripts/jquery-1.8.2.js">
+      <publishTime>09/03/2015 11:26:54</publishTime>
+    </File>
+    <File Include="scripts/jquery-1.8.2.min.js">
+      <publishTime>09/03/2015 11:26:54</publishTime>
+    </File>
+    <File Include="scripts/jquery-ui-1.8.24.js">
+      <publishTime>09/03/2015 11:26:54</publishTime>
+    </File>
+    <File Include="scripts/jquery-ui-1.8.24.min.js">
+      <publishTime>09/03/2015 11:26:54</publishTime>
+    </File>
+    <File Include="scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>09/03/2015 11:26:56</publishTime>
+    </File>
+    <File Include="scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>09/03/2015 11:26:56</publishTime>
+    </File>
+    <File Include="scripts/jquery.validate.js">
+      <publishTime>09/03/2015 11:26:54</publishTime>
+    </File>
+    <File Include="scripts/jquery.validate.min.js">
+      <publishTime>09/03/2015 11:26:54</publishTime>
+    </File>
+    <File Include="scripts/jquery.validate.unobtrusive.js">
+      <publishTime>09/03/2015 11:26:56</publishTime>
+    </File>
+    <File Include="scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>09/03/2015 11:26:56</publishTime>
+    </File>
+    <File Include="scripts/knockout-2.2.0.debug.js">
+      <publishTime>09/03/2015 11:27:04</publishTime>
+    </File>
+    <File Include="scripts/knockout-2.2.0.js">
+      <publishTime>09/03/2015 11:27:04</publishTime>
+    </File>
+    <File Include="scripts/lib/bootstrap.js">
+      <publishTime>10/03/2015 14:47:38</publishTime>
+    </File>
+    <File Include="scripts/lib/bootstrap.min.js">
+      <publishTime>10/03/2015 14:47:38</publishTime>
+    </File>
+    <File Include="scripts/lib/collapser.js">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/easing.js">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/h5f.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/lib/h5f.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/lib/h5f.min.js.map">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/lib/Isotope/css/style.css">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/Isotope/jquery.isotope.js">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/Isotope/jquery.isotope.min.js">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery-1.9.1.js">
+      <publishTime>10/03/2015 14:47:36</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery-1.9.1.min.js">
+      <publishTime>10/03/2015 14:47:36</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery-1.9.1.min.map">
+      <publishTime>10/03/2015 14:47:36</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery-ui-1.8.24.js">
+      <publishTime>09/03/2015 12:33:36</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery-ui-1.8.24.min.js">
+      <publishTime>09/03/2015 12:33:36</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery.unobtrusive-ajax.js">
+      <publishTime>09/03/2015 12:33:36</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery.unobtrusive-ajax.min.js">
+      <publishTime>09/03/2015 12:33:36</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery.validate.js">
+      <publishTime>09/03/2015 12:33:38</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery.validate.min.js">
+      <publishTime>09/03/2015 12:33:38</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery.validate.unobtrusive.js">
+      <publishTime>09/03/2015 12:33:38</publishTime>
+    </File>
+    <File Include="scripts/lib/jquery.validate.unobtrusive.min.js">
+      <publishTime>09/03/2015 12:33:38</publishTime>
+    </File>
+    <File Include="scripts/lib/knockout-3.3.0.debug.js">
+      <publishTime>10/03/2015 14:48:14</publishTime>
+    </File>
+    <File Include="scripts/lib/knockout-3.3.0.js">
+      <publishTime>10/03/2015 14:48:12</publishTime>
+    </File>
+    <File Include="scripts/lib/knockout-3.3.0.min.js">
+      <publishTime>01/06/2015 12:04:50</publishTime>
+    </File>
+    <File Include="scripts/lib/knockout-3.3.0.min.js.map">
+      <publishTime>01/06/2015 12:04:50</publishTime>
+    </File>
+    <File Include="scripts/lib/modernizr-2.6.2.js">
+      <publishTime>09/03/2015 12:33:38</publishTime>
+    </File>
+    <File Include="scripts/lib/modernizr-2.6.2.min.js">
+      <publishTime>01/06/2015 12:05:00</publishTime>
+    </File>
+    <File Include="scripts/lib/modernizr-2.6.2.min.js.map">
+      <publishTime>01/06/2015 12:05:00</publishTime>
+    </File>
+    <File Include="scripts/lib/modernizr.custom.48287.js">
+      <publishTime>11/03/2015 21:56:34</publishTime>
+    </File>
+    <File Include="scripts/lib/modernizr.custom.48287.min.js">
+      <publishTime>05/06/2015 15:04:04</publishTime>
+    </File>
+    <File Include="scripts/lib/modernizr.custom.48287.min.js.map">
+      <publishTime>05/06/2015 15:04:06</publishTime>
+    </File>
+    <File Include="scripts/lib/moment-with-locales.js">
+      <publishTime>08/05/2015 09:26:46</publishTime>
+    </File>
+    <File Include="scripts/lib/moment-with-locales.min.js">
+      <publishTime>08/05/2015 09:26:46</publishTime>
+    </File>
+    <File Include="scripts/lib/moment.js">
+      <publishTime>08/05/2015 09:26:46</publishTime>
+    </File>
+    <File Include="scripts/lib/moment.min.js">
+      <publishTime>08/05/2015 09:26:46</publishTime>
+    </File>
+    <File Include="scripts/lib/npm.js">
+      <publishTime>10/03/2015 14:47:38</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_rounded/btnNext.png">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_rounded/btnPrevious.png">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_rounded/contentPattern.png">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_rounded/default_thumbnail.gif">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_rounded/loader.gif">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_rounded/sprite.png">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_square/btnNext.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_square/btnPrevious.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_square/contentPattern.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_square/default_thumbnail.gif">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_square/loader.gif">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/dark_square/sprite.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/default/default_thumb.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/default/loader.gif">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/default/sprite.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/default/sprite_next.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/default/sprite_prev.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/default/sprite_x.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/default/sprite_y.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/facebook/btnNext.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/facebook/btnPrevious.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/facebook/contentPatternBottom.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/facebook/contentPatternLeft.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/facebook/contentPatternRight.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/facebook/contentPatternTop.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/facebook/default_thumbnail.gif">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/facebook/loader.gif">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/facebook/sprite.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_rounded/btnNext.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_rounded/btnPrevious.png">
+      <publishTime>11/03/2015 13:49:06</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_rounded/default_thumbnail.gif">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_rounded/loader.gif">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_rounded/sprite.png">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_square/btnNext.png">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_square/btnPrevious.png">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_square/default_thumbnail.gif">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_square/loader.gif">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/images/prettyPhoto/light_square/sprite.png">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/jquery.prettyPhoto.js">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/PrettyPhoto_3.1.5/prettyPhoto.css">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/restart_theme.js">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/snap.svg-min.js">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/lib/underscore.js">
+      <publishTime>10/03/2015 14:50:00</publishTime>
+    </File>
+    <File Include="scripts/lib/underscore.min.js">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="scripts/lib/underscore.min.map">
+      <publishTime>10/03/2015 14:50:00</publishTime>
+    </File>
+    <File Include="scripts/lib/woothemes-FlexSlider-06b12f8/flexslider.css">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/woothemes-FlexSlider-06b12f8/flexslider_original.css">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/woothemes-FlexSlider-06b12f8/images/bg_direction_nav.png">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/woothemes-FlexSlider-06b12f8/images/luna-controls.png">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/woothemes-FlexSlider-06b12f8/jquery.flexslider-min.js">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/woothemes-FlexSlider-06b12f8/jquery.flexslider.js">
+      <publishTime>11/03/2015 13:49:08</publishTime>
+    </File>
+    <File Include="scripts/lib/wow.min.js">
+      <publishTime>11/03/2015 13:49:04</publishTime>
+    </File>
+    <File Include="scripts/modernizr-2.6.2.js">
+      <publishTime>09/03/2015 11:26:56</publishTime>
+    </File>
+    <File Include="scripts/moment-with-locales.js">
+      <publishTime>08/05/2015 09:26:46</publishTime>
+    </File>
+    <File Include="scripts/moment-with-locales.min.js">
+      <publishTime>08/05/2015 09:26:46</publishTime>
+    </File>
+    <File Include="scripts/moment.js">
+      <publishTime>08/05/2015 09:26:46</publishTime>
+    </File>
+    <File Include="scripts/moment.min.js">
+      <publishTime>08/05/2015 09:26:46</publishTime>
+    </File>
+    <File Include="Service References/Application Insights/ConnectedService.json">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginFailure.cshtml">
+      <publishTime>09/03/2015 12:33:38</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/Manage.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/_ChangePasswordPartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
+      <publishTime>09/03/2015 12:33:38</publishTime>
+    </File>
+    <File Include="Views/Account/_RemoveExternalLoginsPartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/_SetPasswordPartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Batturer/Battur.cshtml">
+      <publishTime>01/04/2017 12:32:45</publishTime>
+    </File>
+    <File Include="Views/Batturer/BatturEngelsk.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Batturer/Batturer.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Batturer/EndreBattur.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Bildegalleri/Bildegalleri.cshtml">
+      <publishTime>01/04/2017 14:17:24</publishTime>
+    </File>
+    <File Include="Views/Bildegalleri/EndreBildegalleri.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Bloggpost/Bloggpost.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Bloggpost/Blogg_gml.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Engelsk/BatturEngelsk.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Engelsk/IndexEngelsk.cshtml">
+      <publishTime>01/04/2017 14:26:00</publishTime>
+    </File>
+    <File Include="Views/Engelsk/MenyEngelsk.cshtml">
+      <publishTime>01/04/2017 10:45:41</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>09/03/2015 11:26:50</publishTime>
+    </File>
+    <File Include="Views/Home/ContactUs.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/EndreDivAdmin.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>01/04/2017 14:18:53</publishTime>
+    </File>
+    <File Include="Views/Home/IndexEnglish.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/KontaktOss.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Home/Pris.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Meny/EndreMeny.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Meny/Meny.cshtml">
+      <publishTime>01/04/2017 10:45:41</publishTime>
+    </File>
+    <File Include="Views/Pris/EndrePris.cshtml">
+      <publishTime>01/04/2017 11:55:43</publishTime>
+    </File>
+    <File Include="Views/Pris/Pris.cshtml">
+      <publishTime>01/04/2017 13:44:32</publishTime>
+    </File>
+    <File Include="Views/Samarbeidspartnere/EndreSamarbeidspartner.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Samarbeidspartnere/Samarbeidspartner.cshtml">
+      <publishTime>01/04/2017 09:47:57</publishTime>
+    </File>
+    <File Include="Views/Samarbeidspartnere/Samarbeidspartnere.cshtml">
+      <publishTime>01/04/2017 10:45:41</publishTime>
+    </File>
+    <File Include="Views/Samarbeidspartnere/_MenyPartnerePartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_GoogleAnalytics.cshtml">
+      <publishTime>06/06/2015 10:39:12</publishTime>
+    </File>
+    <File Include="Views/Shared/_HeadPartial.cshtml">
+      <publishTime>01/04/2017 09:38:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>01/04/2017 14:17:49</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutEnglish.cshtml">
+      <publishTime>01/04/2017 14:23:59</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_LogoPartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_LogoutPartial.cshtml">
+      <publishTime>05/06/2015 14:47:42</publishTime>
+    </File>
+    <File Include="Views/Shared/_MenyPartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_MenyPartialEngelsk.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/02/2017 15:47:04</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

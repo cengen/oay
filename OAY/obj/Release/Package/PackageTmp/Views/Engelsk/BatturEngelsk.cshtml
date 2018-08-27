@@ -1,0 +1,62 @@
+﻿@model OAY.Web.ViewModels.BatturViewModel
+
+@{
+    ViewBag.Title = "Sightseeing in the Oslo Fjord";
+    ViewBag.Description = "Sightseeing in the Oslo Fjord will give you the best possible way of enjoying 'Summer in Oslo'. Try one of our trips from Oslo to " + Model.Battur.Overskrift;
+    ViewBag.Keywords = "Oslofjorden, Sightseeing, Boattrip, Summer";
+    Layout = "~/Views/Shared/_LayoutEnglish.cshtml";
+}
+
+@section scripts {
+<script>
+    $(document).ready(function() {
+        $('.thumb').on('click', function() {
+            $('#showimagediv').attr("src", this.src);
+        });
+    });
+</script>
+}
+
+<div class="main">
+    <div class="container">
+        <section class="call_to_action">
+            <h3>@Model.Battur.TilSted</h3>
+         
+        </section>
+            <section class="portfolio_slider_wrapper">
+                <div class="flexslider">
+                    <div class="item">
+                        <img id="showimagediv" src="@Url.Content(Model.Hovedbilde)" alt="sightseeing in the Oslo Fjord - Oslo to @Model.Battur.Overskrift" />
+                    </div>
+                </div>
+                <div id="carousel" class="flexislider">
+                    <ul class="slides">
+                        @foreach (var m in Model.Bilder)
+                        {
+                            <li>
+                                <img class="thumb" src="@Url.Content(m.ImageFile)" alt="boat cruise in the OsloFjord - Oslso to @Model.Battur.Overskrift" />
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <div class="row">
+                    <div class="col-sm-9 col-md-9">
+                        <h2 class="section_header">Information about the boattrip</h2>
+                        <p>@Model.Battur.EngelskBeskrivelse</p>
+                    </div>
+                    <div class="well col-sm-3 col-md-3">
+                        <p><strong>Min time:  </strong><span>@Model.Battur.MinimumTid</span> hours</p>
+                        <p><strong>From:    </strong><span>@Model.Battur.FraSted</span></p>
+                        <p><strong>To:    </strong><span>@Model.Battur.TilSted</span></p>
+                        @*<p><strong>Price (from):   </strong><span>@Model.Pris </span> (for <span>@Model.Battur.MinimumTid</span> hours)</p>*@
+                    </div>
+                </div>
+                <ul class="pager">
+                    <li class="previous"><a href="@Url.Action("BatturEngelsk", "engelsk", new { id = Model.ForrigeBattur })">← Previous</a></li>
+                    <li class="next"><a href="@Url.Action("BatturEngelsk", "engelsk", new { id = Model.NesteBattur })">Next →</a></li>
+                </ul>
+            </section>
+</div>
+</div>

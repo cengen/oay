@@ -1,0 +1,117 @@
+﻿@model OAY.Web.ViewModels.PrisInfoViewModel
+
+
+@section scripts{
+    <script>
+
+        $(function() {
+
+
+            function prisinfo(timepris, minimumstid, bilde) {
+                var self = this;
+                self.timepris = ko.observable(timepris);
+                self.minimumstid = ko.observable(minimumstid);
+                self.imagefile = ko.observable(imagefile);
+            };
+
+
+            var viewModel = function (prisInfo) {
+                var self = this;
+                @*self.model = ko.observable("@Model.PrisInfo");*@
+  self.timepris = ko.observable('@Model.PrisInfo.Timepris');
+                self.minimumstid = ko.observable('@Model.PrisInfo.MinimumsTid');
+                self.imagefile = ko.observable('@Model.PrisInfo.ImageFile');
+
+                //self.showImageUpload = function () {
+                //    $('#lastOppBilde-button').hide();
+                //    $('#upload-form-container').removeClass('none');
+                //};
+                //self.hideImageUpload = function () {
+                //    $('#lastOppBilde-button').show();
+                //    $('#upload-form-container').addClass('none');
+                //    $('#nye-bilder-container').addClass('none');
+                //};
+
+
+                self.save = function() {
+                    var valUtility = new ValidationUtility();
+                    if (valUtility.validate('prisinfo-data-form')) {
+                        $('#command-buttons').hide();
+
+                        var timepris = self.timepris();
+                        var minimumstid = self.minimumstid();
+                        var imagefile =  self.imagefile();
+                        var prisinfoid = 1;
+                        var model = ({ "prisinfoid": prisinfoid, "imagefile": imagefile, "minimumstid": minimumstid, "timepris": timepris });
+
+
+                        prisinfoDataService.save(model).done(function(response) {
+                            location.reload();
+                        }).fail(function(error) {
+                            console.log("feil: " +  JSON.stringify(error)); //vm.showError(error + "Kunne ikke lagre båttur");
+                        });
+                    } //if
+                };
+
+            };
+
+
+            var vm = new viewModel();
+
+
+            ko.applyBindings(vm);
+
+        });
+
+    </script>
+}
+
+
+
+<div class="main">
+
+    <div class="container">
+
+        <div class="alert alert-warning" role="alert">
+            Skriv inn nye verdier og trykk lagre
+        </div>
+
+
+
+
+        <section>
+            <form id="prisinfo-data-form">
+                <label for="prisPrHour">Timespris </label>
+                <input id="prisPrHour" data-bind="value: timepris" type="text"/>
+             
+              
+                <br/>
+                <br/>
+                <label for="minimumTid">Minimumstid </label>
+                <input id="minimumTid" data-bind="value: minimumstid" type="text"/>
+
+
+                @*<div class="well col-sm-2 col-md-2">
+                    <img style="width: 150px; height: 120px;" data-bind="attr: { src: '@Model.ImagePath' }"/>
+                  
+                </div>*@
+
+
+                <button data-bind="click: save" type="button"
+                        class="btn btn-primary btn-large push-right cmd">
+                    Lagre endringene
+                </button>
+            </form>
+            <hr/>
+
+        </section>
+    </div>
+</div>
+
+
+
+
+
+
+
+

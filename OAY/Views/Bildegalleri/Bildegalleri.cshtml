@@ -1,0 +1,178 @@
+﻿@using OAY.Web
+@model OAY.Web.ViewModels.BildegalleriViewModel
+
+@{
+    ViewBag.Title = "Lunsjcruise i Oslofjorden";
+    ViewBag.Description = "Lunsjcruise i Oslofjorden. Båtturer i Oslos skjærgård. Lunsj med kollegaer eller venner";
+    ViewBag.Keywords = "Oslofjorden, Båttur, Lunsjcruise, Oslo";
+}
+
+
+
+@section scripts {
+    <script>
+    $(document).ready(function() {
+        $('.thumb').on('click', function() {
+            $('.showimagediv').attr("src", this.src);
+        });
+    });
+    </script>
+}
+
+<div class="main">
+    <div class="container">
+    
+            @*<h1 class="section_header fancy centered">Båten</h1>*@
+            <figure><img src="~/Images/Bildegalleri/toppBilde.jpg" class="img-rounded" alt="Ocean Adventure"></figure>
+            <section class="hgroup">
+                <h1 class="section_header fancy centered">Båten</h1>
+
+
+                <ul class="breadcrumb pull-right">
+                    <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+                    <li class="active">Båten</li>
+                </ul>
+            </section>
+        <section>
+            <div class="row">
+
+                <div class="col-sm-6 col-md-6">
+                    <section class="bildegalleri_wrapper">
+                        <div class="flexslider">
+                           
+                                <img class="showimagediv" src="@Url.Content(Model.Bilder[0].ImageFile)" alt="båttur i Oslofjorden - sommerfest til sjøs" />
+                          
+                        </div>
+                    </section>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <article class="portfolio_details">
+                        <h2 class="section_header"><b>@Model.Bildegalleri.Tittel</b></h2>
+                        <p>
+                            @Model.Bildegalleri.Ingress<br /><br />
+                            @Model.Bildegalleri.Tekst1<br/>
+                            @Model.Bildegalleri.Tekst2<br/><br />
+                            @Model.Bildegalleri.Tekst3
+                        </p>
+                        <br>
+                        <div>
+                            <p><strong>Modell:</strong> @Model.Bildegalleri.Model</p>
+                            <p><strong>Type:</strong> @Model.Bildegalleri.Type</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <section class="portfolio_slider_wrapper">
+                        <div id="carousel" class="flexislider">
+                        
+                                <ul class="slides">
+                                    @foreach (var m in Model.Bilder)
+                                    {
+                                      
+                                    <li >
+                                        <img class="thumb" src="@Url.Content(m.ImageFile)" alt="båttur i Oslofjorden, sightseeing i Oslofjorden"/>
+                                    </li>
+                                           
+                                            }
+</ul>
+                          
+                        </div>
+                    </section>
+                </div>
+                </div>
+
+        </section>
+
+
+
+
+
+        @*<section class="call_to_action">
+            <h3>@Model.Battur.TilSted</h3>
+
+        </section>
+
+
+        <section class="portfolio_slider_wrapper">
+            <div class="flexslider">
+                <div class="item">
+                    <img id="showimagediv" src="@Url.Content(Model.Hovedbilde)" alt="båttur i Oslofjorden - til @Model.Battur.TilSted - sommerfest til sjøs" />
+                </div>
+            </div>
+            <div id="carousel" class="flexislider">
+                <ul class="slides">
+                    @foreach (var m in Model.Bilder)
+                    {
+                        <li>
+                            <img class="thumb" src="@Url.Content(m.ImageFile)" alt="båttur i Oslofjorden, båtcruise til @Model.Battur.TilSted - sightseeing i Oslofjorden" />
+                        </li>
+                    }
+                </ul>
+            </div>
+        </section>
+        <section>
+            <div class="row">
+                <div class="col-sm-9 col-md-9">
+                    <h2 class="section_header">@Model.Battur.Ingress</h2>
+                    <p>@Model.Battur.Beskrivelse</p>
+                </div>
+                <div class="well col-sm-3 col-md-3">
+                    <p><strong>Min tid:  </strong><span>@Model.Battur.MinimumTid</span> timer</p>
+                    <p><strong>Fra:    </strong><span>@Model.Battur.FraSted</span></p>
+                    <p><strong>Til:    </strong><span>@Model.Battur.TilSted</span></p>
+                </div>
+            </div>
+            <ul class="pager">
+                <li class="previous"><a href="@Url.Action("Battur", "batturer", new { id = Model.ForrigeBattur })">← Forrige</a></li>
+                <li class="next"><a href="@Url.Action("Battur", "batturer", new { id = Model.NesteBattur })">Neste →</a></li>
+            </ul>
+        </section>*@
+    </div>
+</div>
+
+
+
+@*<div class="main">
+    <div class="container samarbeidspartner">
+        <section class="hgroup">
+            <h1 class="section_header fancy centered">Båten</h1>
+
+            <ul class="breadcrumb pull-right">
+                <li>@Html.ActionLink("Hjem", "Index", "Home")</li>
+                <li class="active">Båten</li>
+            </ul>
+        </section>
+        <section>
+            <div class="row">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-sm-6 width500">
+
+                            <img src="~/Images/Bildegalleri/1.JPG" style="width: 500px"/>
+                        </div>
+                        <div class="col-sm-6 width500">
+                            <img src="~/Images/Bildegalleri/3.JPG" style="width: 500px"/> 
+                            </div>
+                        </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 width500">
+                            <img src="~/Images/Bildegalleri/2.jpg" style="width: 500px"/>
+                            </div>
+                            <div class="col-sm-6 width500">
+                                <img src="~/Images/Bildegalleri/5.jpg" style="width: 500px; margin-top: 60px;" />
+                                </div>
+                            </div>
+
+
+
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>*@

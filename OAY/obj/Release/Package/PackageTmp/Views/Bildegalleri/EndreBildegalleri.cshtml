@@ -1,0 +1,140 @@
+﻿@model OAY.Web.ViewModels.BildegalleriViewModel
+
+
+@section scripts{
+    <script>
+
+    $(function () {
+
+        function Meny(type, beskrivelse, engelskBeskrivelse, pris) {
+            var self = this;
+            self.type = ko.observable(type);
+            self.beskrivelse = ko.observable(beskrivelse);
+            self.engelskBeskrivelse = ko.observable(engelskBeskrivelse);
+            self.pris = ko.observable(pris);
+        };
+
+        var ViewModel = function () {
+            var self = this;
+            @*self.meny = ko.observable("@Model.Meny");
+
+            var listeJSON = @Html.Raw(Json.Encode(Model.MenyListeJSON));
+            var listeParsed = ko.utils.parseJson(listeJSON);
+            self.menyliste = ko.observableArray(listeParsed);
+
+            var menytyperJSON = '[{ "menytype": "Forrett" }, { "menytype": "Hovedrett" }, { "menytype": "Dessert" }, { "menytype": "Rødvin" }, { "menytype": "Hvitvin" }, { "menytype": "Likør" }, { "menytype": "Aperitiff" }, { "menytype": "Diverse" }]';
+            var menytyperParsed = ko.utils.parseJson(menytyperJSON);
+            self.menytyper = ko.observableArray(menytyperParsed);
+
+            self.nyMeny = function () {
+                self.menyliste.push(new Meny("", "", ""));
+            };
+
+            self.fjernMeny = function (meny) {
+                self.menyliste.remove(meny);
+            };
+
+            self.selectedValue = ko.observable(ko.utils.arrayFirst(self.menytyper(), function (meny) {
+                return meny.type;
+            }));
+
+
+
+            self.save = function (meny) {
+                var valUtility = new ValidationUtility();
+                if (valUtility.validate('meny-data-form')) {
+                    $('#command-buttons').hide();                 
+                    menyDataService.save(meny).done(function (response) {   
+                        location.reload();
+                    }).fail(function (error) {
+                        console.log("feil: " + error);  //vm.showError(error + "Kunne ikke lagre båttur");
+                    });
+                }//if
+            };
+
+
+            self.del = function (meny) {
+                menyDataService.del(meny).done(function (response) {
+                    console.log("ok"); 
+                    location.reload();
+                }).fail(function (error) {
+                    console.log("feil: " + error)
+                });
+            };
+
+            self.nyMenylinje = function () {
+                self.menyliste.push(new Meny());
+            };*@
+
+        };
+        var vm = new ViewModel();
+
+        ko.applyBindings(vm);
+
+    });
+
+    </script>
+}
+
+
+
+
+<div class="main">
+
+    <div class="container">
+
+        @*<div class="alert alert-warning" role="alert">Husk å legge inn en engelsk tekst selvom den er lik den norske:-)</div>
+
+
+         Form data 
+        <section>
+            <form id="meny-data-form">
+                <table class="table table-hover">
+                    <thead>
+                        <tr><th>Type</th><th>Beskrivelse</th><th>Engelsk</th><th>Pris</th></tr>
+                    </thead>
+                    <tbody data-bind="foreach: menyliste">
+                    <tr class="form-group">
+                        <td>
+                            <select data-bind="options: $root.menytyper, optionsValue: 'menytype', value: type, optionsText: 'menytype'"  />
+                        </td>
+                        <td>
+                            <input data-bind="value: beskrivelse" type="text"/>
+                        </td>
+                        <td>
+                            <input data-bind="value: engelskBeskrivelse" type="text" />
+                        </td>
+                        <td>
+                            <input data-bind="value: pris" type="text"/>
+                        </td>
+                        <td>
+                            <button data-bind="click: $root.save" type="button"
+                                    class="btn btn-primary btn-large push-right cmd">
+                                Lagre endringene
+                            </button>
+                        </td>
+                        <td>
+                            <a href="#" class="cmd btn btn-danger"
+                               data-bind="click: $root.del">Slett</a>
+                        </td>
+                       
+
+                    </tr>
+
+                    </tbody>
+                    </table>
+
+            </form>
+            <hr/>
+            <button data-bind="click: nyMenylinje" class="btn btn-primary btn-large push-left cmd">Legg til menylinje</button>
+
+        </section>*@
+      </div>
+    </div>
+
+
+
+
+
+
+
